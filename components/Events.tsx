@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapPin, Calendar, ArrowRight, Instagram, CalendarDays, Map as MapIcon, CreditCard } from 'lucide-react';
 import { Button } from './Button';
 import { ASSETS } from '../constants';
@@ -10,21 +11,10 @@ export const Events: React.FC = () => {
   const { language } = useLanguage();
   const t = CONTENT[language].events;
   const [activeMap, setActiveMap] = useState<'lisboa' | 'madeira' | null>(null);
+  const navigate = useNavigate();
 
   const handleEventClick = (eventId: string) => {
-    const formElement = document.getElementById('lead-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => {
-        const event = new CustomEvent('prefill-contact-form', { 
-          detail: { interest: eventId } 
-        });
-        window.dispatchEvent(event);
-      }, 800);
-    } else {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/contactos', { state: { interest: eventId } });
   };
 
   const toggleMap = (location: 'lisboa' | 'madeira') => {

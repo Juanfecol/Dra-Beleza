@@ -4,12 +4,11 @@ export const FORM_CONFIG = {
   subject: "Novo Contacto - Landing Page Dra. Beleza"
 };
 
+export const SITE_URL = "https://www.drabeleza.pt";
+
 export const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbwATXLCZYw3lln-wAU1CJC1kFetU37o6c-10eBFk_TN2DIhEgXc-2Sro-3fuSRacQv2/exec";
 
 export const STRIPE_EBOOK_URL = "https://buy.stripe.com/00waEX7TP1PTgD0dP2ebu06";
-export const STRIPE_MEMBERSHIP_URL = "https://buy.stripe.com/dRmcN5fmhdyBgD07qEebu07";
-
-export const KBEAUTY_COMMUNITY_URL = "https://chat.whatsapp.com/CEpKtbIOBB0BuqqAmD6hkI?mode=hqrt3";
 
 export const CONTACT_INFO = {
   address: "Av. da República, Amadora, Portugal",
@@ -29,16 +28,14 @@ export const LEGAL_INFO = {
 };
 
 export const NAVIGATION_LINKS = [
-  { id: 'home', href: '#home' },
-  { id: 'about', href: '#about' },
-  { id: 'stories', href: '#testimonials' },
-  { id: 'services', href: '#services' },
-  { id: 'academy', href: '#education' },
-  { id: 'events', href: '#events' },
-  { id: 'shop', href: '#shop' },
-  { id: 'kbeauty', href: '#k-beauty' },
-  { id: 'club', href: '#membership' },
-  { id: 'contact', href: '#contact' },
+  { id: 'home', href: '/' },
+  { id: 'about', href: '/sobre' },
+  { id: 'stories', href: '/historias' },
+  { id: 'services', href: '/tratamentos' },
+  { id: 'academy', href: '/academy' },
+  { id: 'events', href: '/eventos' },
+  { id: 'shop', href: '/loja' },
+  { id: 'contact', href: '/contactos' },
 ];
 
 export const getOptimizedUrl = (url: string, width: number = 800) => {
@@ -53,6 +50,7 @@ export const getOptimizedUrl = (url: string, width: number = 800) => {
 };
 
 export const ASSETS = {
+  logo: 'https://dra-beleza-pt.b-cdn.net/Ativo%2058.png',
   hero: 'https://dra-beleza-pt.b-cdn.net/IMG_5567-Editar_reducida.jpg', 
   heroVideo: '',
   
@@ -70,9 +68,6 @@ export const ASSETS = {
     'https://dra-beleza-pt.b-cdn.net/AQPX6hCD73hQDVT2Bfkzchcji2C1iu8chduAYituxB_8PyReTmfpqzcp7dgC2Ouxhq544YE40CI9dTj9JnRcQN4q48se_jli3DakgB4.mp4'
   ],
   
-  kbeauty: 'https://dra-beleza-pt.b-cdn.net/IMG_5533-Editar.jpg',
-  kbeautyVideo: '',
-  
   events: {
     bg: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop',
     lisboa: 'https://images.unsplash.com/photo-1585208798174-6ced31f47353?q=80&w=1000&auto=format&fit=crop',
@@ -80,6 +75,8 @@ export const ASSETS = {
   },
   
   ebook: 'https://dra-beleza-pt.b-cdn.net/ebook-beleza-regenerativa.jpg',
+  
+  contact: 'https://dra-beleza-pt.b-cdn.net/IMG_5533-Editar.jpg',
   
   retinol: 'https://images.unsplash.com/photo-1556228552-523cd13b0302?q=80&w=1000&auto=format&fit=crop',
 

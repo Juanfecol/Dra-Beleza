@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { Loader2, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
 import { GOOGLE_SHEETS_URL } from '../constants';
@@ -15,12 +16,11 @@ const INTEREST_MAP: Record<string, keyof typeof CONTENT['pt']['form']['options']
   'products': 'opt7',
   'kit_retinol': 'optKit',
   'academy': 'opt8',
-  'kbeauty': 'opt9',
-  'membership': 'opt10'
 };
 
 export const LeadForm: React.FC = () => {
   const { language } = useLanguage();
+  const location = useLocation();
   const t = CONTENT[language].form;
   
   const prevLanguageRef = useRef(language);
@@ -59,29 +59,19 @@ export const LeadForm: React.FC = () => {
   }, [language, formState.interest]);
 
   useEffect(() => {
-    const handlePrefill = (e: CustomEvent) => {
-      if (e.detail && e.detail.interest) {
-        const interestId = e.detail.interest;
-        const mappedKey = INTEREST_MAP[interestId];
-        let finalInterest = '';
-        if (mappedKey) {
-          finalInterest = CONTENT[language].form.options[mappedKey];
-        } else {
-          finalInterest = interestId;
-        }
-
-        setFormState(prev => ({ ...prev, interest: finalInterest }));
-        
-        const nameInput = document.getElementById('name');
-        if (nameInput) nameInput.focus();
+    if (location.state && (location.state as any).interest) {
+      const interestId = (location.state as any).interest;
+      const mappedKey = INTEREST_MAP[interestId];
+      let finalInterest = '';
+      if (mappedKey) {
+        finalInterest = CONTENT[language].form.options[mappedKey];
+      } else {
+        finalInterest = interestId;
       }
-    };
 
-    window.addEventListener('prefill-contact-form' as any, handlePrefill as any);
-    return () => {
-      window.removeEventListener('prefill-contact-form' as any, handlePrefill as any);
-    };
-  }, [language]); 
+      setFormState(prev => ({ ...prev, interest: finalInterest }));
+    }
+  }, [location.state, language]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -242,8 +232,6 @@ export const LeadForm: React.FC = () => {
               </optgroup>
               <optgroup label={t.options.group4}>
                 <option value={t.options.opt8}>{t.options.opt8}</option>
-                <option value={t.options.opt9}>{t.options.opt9}</option>
-                <option value={t.options.opt10}>{t.options.opt10}</option>
               </optgroup>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-stone-500">

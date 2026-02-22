@@ -1,22 +1,33 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Services } from './components/Services';
-import { Events } from './components/Events'; 
-import { Shop } from './components/Shop'; 
-import { KBeauty } from './components/KBeauty';
-import { Membership } from './components/Membership';
-import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { CookieConsent } from './components/CookieConsent';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { MouseTrail } from './components/MouseTrail';
-import { PromoBanner } from './components/PromoBanner';
-import { FloatingPromo } from './components/FloatingPromo';
-import { Testimonials } from './components/Testimonials';
+import { Home } from './src/pages/Home';
+import { AboutPage } from './src/pages/AboutPage';
+import { StoriesPage } from './src/pages/StoriesPage';
+import { TreatmentsPage } from './src/pages/TreatmentsPage';
+import { AcademyPage } from './src/pages/AcademyPage';
+import { EventsPage } from './src/pages/EventsPage';
+import { ShopPage } from './src/pages/ShopPage';
+import { ContactPage } from './src/pages/ContactPage';
+import { Contact } from './components/Contact';
+import { AnimatePresence } from 'motion/react';
 
-function App() {
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+function AppContent() {
+  const location = useLocation();
+  
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -39,29 +50,40 @@ function App() {
       observer.disconnect();
       clearTimeout(timer);
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
+    <div className="min-h-screen bg-stone-50 text-stone-800 selection:bg-brand-200 selection:text-brand-900 font-sans flex flex-col">
+      <ScrollToTop />
+      <MouseTrail />
+      <Header />
+      <main className="flex-grow">
+        <AnimatePresence mode="wait">
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<AboutPage />} />
+            <Route path="/historias" element={<StoriesPage />} />
+            <Route path="/tratamentos" element={<TreatmentsPage />} />
+            <Route path="/academy" element={<AcademyPage />} />
+            <Route path="/eventos" element={<EventsPage />} />
+            <Route path="/loja" element={<ShopPage />} />
+            <Route path="/contactos" element={<ContactPage />} />
+          </Routes>
+        </AnimatePresence>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <CookieConsent />
+    </div>
+  );
+}
+
+function App() {
+  return (
     <LanguageProvider>
-      <div className="min-h-screen bg-stone-50 text-stone-800 selection:bg-brand-200 selection:text-brand-900 font-sans">
-        <MouseTrail />
-        <Header />
-        <main>
-          <Hero />
-          <PromoBanner />
-          <About />
-          <Testimonials />
-          <Services />
-          <Events /> 
-          <Shop />
-          <KBeauty />
-          <Membership />
-        </main>
-        <Contact />
-        <WhatsAppButton />
-        <FloatingPromo />
-        <CookieConsent />
-      </div>
+      <Router>
+        <AppContent />
+      </Router>
     </LanguageProvider>
   );
 }

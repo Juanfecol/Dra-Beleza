@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Instagram } from 'lucide-react';
-import { NAVIGATION_LINKS } from '../constants';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { NAVIGATION_LINKS, ASSETS } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 
@@ -8,6 +9,8 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
   const t = CONTENT[language];
 
   useEffect(() => {
@@ -27,28 +30,8 @@ export const Header: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false); 
-
-    const targetId = href.replace('#', '');
-    
-    setTimeout(() => {
-      if (targetId === 'home' || targetId === '') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-      }
-
-      const element = document.getElementById(targetId);
-      if (element) {
-        const headerOffset = 90;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }, 100);
+  const handleNavClick = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -62,25 +45,32 @@ export const Header: React.FC = () => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           
-          <a 
-            href="#home" 
-            onClick={(e) => handleNavClick(e, '#home')}
-            className="text-2xl font-serif font-bold text-stone-800 flex items-center gap-2 relative z-50 flex-shrink-0 group"
+          <Link 
+            to="/" 
+            onClick={handleNavClick}
+            className="relative z-50 flex-shrink-0 group"
           >
-            <span className="text-brand-600 group-hover:scale-110 transition-transform duration-300 inline-block">Dra.</span> Beleza
-          </a>
+            <img 
+              src={ASSETS.logo} 
+              alt="Dra. Beleza" 
+              className="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              referrerPolicy="no-referrer"
+            />
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50 shadow-sm">
             {NAVIGATION_LINKS.map((link) => (
-              <a 
+              <Link 
                 key={link.id} 
-                href={link.href} 
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="relative px-4 py-2 text-sm font-medium text-stone-600 hover:text-brand-600 transition-colors cursor-pointer whitespace-nowrap group rounded-full hover:bg-white/80"
+                to={link.href} 
+                onClick={handleNavClick}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors cursor-pointer whitespace-nowrap group rounded-full hover:bg-white/80 ${
+                  location.pathname === link.href ? 'text-brand-600 bg-white/80' : 'text-stone-600 hover:text-brand-600'
+                }`}
               >
                 {/* @ts-ignore */}
                 {t.nav[link.id]}
-              </a>
+              </Link>
             ))}
             
             <div className="w-px h-4 bg-stone-300 mx-2"></div>
@@ -145,16 +135,18 @@ export const Header: React.FC = () => {
         >
           <div className="flex flex-col py-2">
             {NAVIGATION_LINKS.map((link, idx) => (
-              <a 
+              <Link 
                 key={link.id} 
-                href={link.href} 
-                className="text-stone-600 font-medium py-4 px-6 border-b border-stone-50 hover:bg-brand-50 hover:pl-8 hover:text-brand-600 transition-all duration-300 cursor-pointer active:bg-brand-100"
+                to={link.href} 
+                className={`font-medium py-4 px-6 border-b border-stone-50 hover:bg-brand-50 hover:pl-8 transition-all duration-300 cursor-pointer active:bg-brand-100 ${
+                  location.pathname === link.href ? 'text-brand-600 pl-8 bg-brand-50' : 'text-stone-600 hover:text-brand-600'
+                }`}
                 style={{ transitionDelay: `${idx * 50}ms` }}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={handleNavClick}
               >
                 {/* @ts-ignore */}
                 {t.nav[link.id]}
-              </a>
+              </Link>
             ))}
             <a 
               href="https://instagram.com/DraBeleza.pt" 

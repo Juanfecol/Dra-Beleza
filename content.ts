@@ -11,8 +11,6 @@ export const CONTENT = {
       academy: 'Academy',
       events: 'Eventos',
       shop: 'Loja',
-      kbeauty: 'K-Beauty',
-      club: 'Clube',
       contact: 'Contactos',
     },
     paymentNotice: 'Facilidade de Pagamento: Possibilidade de pagamento faseado nos serviços.',
@@ -220,31 +218,6 @@ export const CONTENT = {
         btn: 'View Catalog / Order'
       }
     },
-    kbeauty: {
-      badge: 'COMUNIDADE EXCLUSIVA',
-      titleStart: 'Descubra os Segredos do',
-      titleHighlight: 'K-Beauty',
-      desc: 'Skincare, um espaço para conhecer, aprender e descobrir a filosofia da Coreia do Sul. Junte-se à nossa comunidade.',
-      promo: 'EXPLORA A POSSIBILIDADE DE ENTRAR NA EQUIPA E COMEÇAR A MONETIZAR COM O K-BEAUTY DA ATOMY!',
-      vipOffer: 'Tenha acesso a um teste VIP gratuito dos produtos.',
-      btn: 'Entrar na Comunidade',
-      footer: 'Gerido por Lesia - Especialista K-Beauty',
-      loading: 'A redirecionar...'
-    },
-    membership: {
-      badge: 'Clube Dra. Beleza',
-      title: 'Torne-se um membro VIP',
-      desc: 'Receba conteúdos exclusivos, dicas de regeneração celular e descontos especiais diretamente no seu email todos os meses.',
-      offer: 'Oferta Especial',
-      period: '/mês',
-      benefits: [
-        'Informação exclusiva mensal',
-        'Descontos em tratamentos',
-        'Dicas de Skin Care e Nutrição'
-      ],
-      btn: 'Subscrever Agora',
-      delivery: 'Entregue via Email'
-    },
     contact: {
       title: 'Vamos conversar?',
       desc: 'Agende a sua consulta ou tire as suas dúvidas. O seu caminho para a beleza regenerativa começa aqui.',
@@ -294,8 +267,6 @@ export const CONTENT = {
         optKit: 'Kit Retinol',
         group4: 'Outros',
         opt8: 'Mentoria / Academy',
-        opt9: 'Comunidade K-Beauty',
-        opt10: 'Clube Dra. Beleza (Subscrição)'
       }
     },
     cookies: {
@@ -319,8 +290,6 @@ export const CONTENT = {
       academy: 'Academy',
       events: 'Events',
       shop: 'Shop',
-      kbeauty: 'K-Beauty',
-      club: 'Club',
       contact: 'Contact',
     },
     paymentNotice: 'Payment Options: Installment payment available for services.',
@@ -528,31 +497,6 @@ export const CONTENT = {
         btn: 'View Catalog / Order'
       }
     },
-    kbeauty: {
-      badge: 'EXCLUSIVE COMMUNITY',
-      titleStart: 'Discover the Secrets of',
-      titleHighlight: 'K-Beauty',
-      desc: 'Skincare, a space to know, learn and discover the philosophy of South Korea. Join our community.',
-      promo: 'EXPLORE THE POSSIBILITY OF JOINING THE TEAM AND START MONETIZING WITH ATOMY K-BEAUTY!',
-      vipOffer: 'Get access to a free VIP product test.',
-      btn: 'Join Community',
-      footer: 'Managed by Lesia - K-Beauty Specialist',
-      loading: 'Redirecting...'
-    },
-    membership: {
-      badge: 'Dra. Beleza Club',
-      title: 'Become a VIP Member',
-      desc: 'Receive exclusive content, cellular regeneration tips, and special discounts directly to your email every month.',
-      offer: 'Special Offer',
-      period: '/month',
-      benefits: [
-        'Exclusive Monthly Information',
-        'Discounts on Treatments',
-        'Skin Care and Nutrition Tips'
-      ],
-      btn: 'Subscribe Now',
-      delivery: 'Delivered via Email'
-    },
     contact: {
       title: 'Let\'s talk?',
       desc: 'Schedule your consultation or ask your questions. Your path to regenerative beauty starts here.',
@@ -602,8 +546,6 @@ export const CONTENT = {
         optKit: 'Retinol Kit',
         group4: 'Others',
         opt8: 'Mentorship / Academy',
-        opt9: 'K-Beauty Community',
-        opt10: 'Dra. Beleza Club (Subscription)'
       }
     },
     cookies: {

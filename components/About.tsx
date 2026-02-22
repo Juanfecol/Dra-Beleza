@@ -4,12 +4,16 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 import { OptimizedImage } from './OptimizedImage';
 
-export const About: React.FC = () => {
+interface AboutProps {
+  isPreview?: boolean;
+}
+
+export const About: React.FC<AboutProps> = ({ isPreview = false }) => {
   const { language } = useLanguage();
   const t = CONTENT[language].about;
   
   return (
-    <section id="about" className="py-20 bg-white scroll-mt-28">
+    <section id="about" className={`py-20 bg-white ${!isPreview ? 'scroll-mt-28' : ''}`}>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           
@@ -35,11 +39,25 @@ export const About: React.FC = () => {
             
             <div className="space-y-4 text-stone-600 leading-relaxed text-lg">
               <p dangerouslySetInnerHTML={{ __html: t.p1.replace('Dra. Beleza', '<strong>Dra. Beleza</strong>') }} />
-              <p>{t.p2}</p>
-              <p className="border-l-4 border-brand-400 pl-4 italic text-stone-700 my-6 bg-brand-50/50 p-4 rounded-r-lg">
-                {t.quote}
-              </p>
-              <p>{t.p3}</p>
+              {!isPreview && (
+                <>
+                  <p>{t.p2}</p>
+                  <p className="border-l-4 border-brand-400 pl-4 italic text-stone-700 my-6 bg-brand-50/50 p-4 rounded-r-lg">
+                    {t.quote}
+                  </p>
+                  <p>{t.p3}</p>
+                </>
+              )}
+              {isPreview && (
+                <div className="pt-4">
+                  <a 
+                    href="/sobre" 
+                    className="text-brand-600 font-bold flex items-center gap-2 hover:gap-3 transition-all"
+                  >
+                    Saber mais sobre a Dra. Beleza &rarr;
+                  </a>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-100">

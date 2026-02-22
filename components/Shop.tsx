@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BookOpen, ShoppingBag, ExternalLink, Sparkles, CreditCard, Check } from 'lucide-react';
 import { Button } from './Button';
 import { ASSETS, STRIPE_EBOOK_URL } from '../constants';
@@ -9,21 +10,10 @@ import { OptimizedImage } from './OptimizedImage';
 export const Shop: React.FC = () => {
   const { language } = useLanguage();
   const t = CONTENT[language].shop;
+  const navigate = useNavigate();
 
   const handleOrder = (productId: string) => {
-    const formElement = document.getElementById('lead-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => {
-        const event = new CustomEvent('prefill-contact-form', { 
-          detail: { interest: productId } 
-        });
-        window.dispatchEvent(event);
-      }, 800);
-    } else {
-       const contactSection = document.getElementById('contact');
-       if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/contactos', { state: { interest: productId } });
   };
 
   const handleBuyEbook = () => {

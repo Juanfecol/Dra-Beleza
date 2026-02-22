@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 import { ArrowRight } from 'lucide-react';
 import { ASSETS, getOptimizedUrl } from '../constants';
@@ -11,22 +12,10 @@ export const Hero: React.FC = () => {
   const t = CONTENT[language].hero;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
+  const navigate = useNavigate();
 
-  const handleScrollToContact = () => {
-    const element = document.getElementById('lead-form');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      
-      setTimeout(() => {
-        const event = new CustomEvent('prefill-contact-form', { 
-          detail: { interest: 'consultation' } 
-        });
-        window.dispatchEvent(event);
-      }, 800);
-    } else {
-       const contactSection = document.getElementById('contact');
-       if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleScheduleClick = () => {
+    navigate('/contactos');
   };
 
   useEffect(() => {
@@ -71,10 +60,10 @@ export const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-on-scroll delay-300 pt-2">
-              <Button onClick={handleScrollToContact} className="group text-sm md:text-base w-full sm:w-auto">
+              <Button onClick={handleScheduleClick} className="group text-sm md:text-base w-full sm:w-auto">
                 {t.ctaMain} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
-              <Button variant="outline" href="#services" className="text-sm md:text-base w-full sm:w-auto">
+              <Button variant="outline" href="/tratamentos" className="text-sm md:text-base w-full sm:w-auto">
                 {t.ctaSecondary}
               </Button>
             </div>

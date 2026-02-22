@@ -1,4 +1,5 @@
 import React, { useState, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, ChevronDown, Plus, ArrowRight, CreditCard } from 'lucide-react';
 import { Button } from './Button';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -73,56 +74,72 @@ const ServiceCard = memo(({ service, isOpen, onToggle, onSchedule, tCommon }: an
   );
 });
 
-export const Services: React.FC = () => {
+interface ServicesProps {
+  isPreview?: boolean;
+  hideAcademy?: boolean;
+  onlyAcademy?: boolean;
+}
+
+export const Services: React.FC<ServicesProps> = ({ 
+  isPreview = false, 
+  hideAcademy = false, 
+  onlyAcademy = false 
+}) => {
   const [openServiceId, setOpenServiceId] = useState<string | null>(null);
   const { language } = useLanguage();
   const t = CONTENT[language].services;
   const common = CONTENT[language];
+
+  const navigate = useNavigate();
 
   const toggleService = (id: string) => {
     setOpenServiceId(prev => prev === id ? null : id);
   };
 
   const handleSchedule = (interestId: string) => {
-    const formElement = document.getElementById('lead-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => {
-        const event = new CustomEvent('prefill-contact-form', { 
-          detail: { interest: interestId } 
-        });
-        window.dispatchEvent(event);
-      }, 800);
-    } else {
-       const contactSection = document.getElementById('contact');
-       if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/contactos', { state: { interest: interestId } });
   };
 
   return (
-    <section id="services" className="py-20 md:py-24 bg-brand-50/30 scroll-mt-28">
+    <section id="services" className={`py-20 md:py-24 bg-brand-50/30 ${!isPreview ? 'scroll-mt-28' : ''}`}>
       <div className="container mx-auto px-4 md:px-6">
         
-        <div className="text-center mb-10 md:mb-14 animate-on-scroll">
-          <span className="text-brand-600 font-bold tracking-widest uppercase text-[10px] md:text-xs bg-white px-3 py-1 rounded-full shadow-sm border border-brand-100">{t.badge}</span>
-          <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mt-4 md:mt-6 mb-4">{t.title}</h2>
-          <p className="text-stone-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">{t.subtitle}</p>
-        </div>
+        {!onlyAcademy && (
+          <>
+            <div className="text-center mb-10 md:mb-14 animate-on-scroll">
+              <span className="text-brand-600 font-bold tracking-widest uppercase text-[10px] md:text-xs bg-white px-3 py-1 rounded-full shadow-sm border border-brand-100">{t.badge}</span>
+              <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mt-4 md:mt-6 mb-4">{t.title}</h2>
+              <p className="text-stone-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">{t.subtitle}</p>
+            </div>
 
-        <div className="max-w-4xl mx-auto mb-20 md:mb-28 flex flex-col gap-4 md:gap-5">
-          {t.data.map((service) => (
-            <ServiceCard 
-              key={service.id}
-              service={service}
-              isOpen={openServiceId === service.id}
-              onToggle={toggleService}
-              onSchedule={handleSchedule}
-              tCommon={{...t, paymentNotice: common.paymentNotice}}
-            />
-          ))}
-        </div>
+            <div className="max-w-4xl mx-auto mb-20 md:mb-28 flex flex-col gap-4 md:gap-5">
+              {t.data.map((service) => (
+                <ServiceCard 
+                  key={service.id}
+                  service={service}
+                  isOpen={openServiceId === service.id}
+                  onToggle={toggleService}
+                  onSchedule={handleSchedule}
+                  tCommon={{...t, paymentNotice: common.paymentNotice}}
+                />
+              ))}
+            </div>
+            
+            {isPreview && (
+              <div className="text-center mb-20">
+                <a 
+                  href="/tratamentos" 
+                  className="inline-flex items-center gap-2 text-brand-600 font-bold hover:gap-3 transition-all"
+                >
+                  Ver todos os tratamentos &rarr;
+                </a>
+              </div>
+            )}
+          </>
+        )}
 
-        <div id="education" className="bg-stone-900 rounded-[2rem] md:rounded-[2.5rem] p-6 py-10 md:p-20 text-white scroll-mt-28 animate-on-scroll shadow-2xl relative overflow-hidden">
+        {(!hideAcademy && (onlyAcademy || !isPreview)) && (
+          <div id="education" className="bg-stone-900 rounded-[2rem] md:rounded-[2.5rem] p-6 py-10 md:p-20 text-white scroll-mt-28 animate-on-scroll shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-brand-900/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
           
           <div className="text-center mb-10 md:mb-16 relative z-10">
@@ -161,8 +178,8 @@ export const Services: React.FC = () => {
             </Button>
             <p className="text-stone-500 text-[10px] md:text-xs mt-4 md:mt-5 uppercase tracking-wide">{t.academyNote}</p>
           </div>
-
         </div>
+      )}
 
       </div>
     </section>
