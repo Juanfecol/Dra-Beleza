@@ -1,5 +1,11 @@
 import React from 'react';
 import { Hero } from '../../components/Hero';
+import { About } from '../../components/About';
+import { Services } from '../../components/Services';
+import { Events } from '../../components/Events';
+import { Testimonials } from '../../components/Testimonials';
+import { Shop } from '../../components/Shop';
+import { Contact } from '../../components/Contact';
 import { motion } from 'motion/react';
 
 export const Home: React.FC = () => {
@@ -11,6 +17,7 @@ export const Home: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       <Hero />
+      <Events />
     </motion.div>
   );
 };

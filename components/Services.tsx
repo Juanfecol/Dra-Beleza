@@ -1,7 +1,6 @@
 import React, { useState, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle2, ChevronDown, Plus, ArrowRight, CreditCard } from 'lucide-react';
-import { Button } from './Button';
+import { CheckCircle2, ChevronDown, Plus, CreditCard } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 
@@ -76,14 +75,10 @@ const ServiceCard = memo(({ service, isOpen, onToggle, onSchedule, tCommon }: an
 
 interface ServicesProps {
   isPreview?: boolean;
-  hideAcademy?: boolean;
-  onlyAcademy?: boolean;
 }
 
 export const Services: React.FC<ServicesProps> = ({ 
-  isPreview = false, 
-  hideAcademy = false, 
-  onlyAcademy = false 
+  isPreview = false
 }) => {
   const [openServiceId, setOpenServiceId] = useState<string | null>(null);
   const { language } = useLanguage();
@@ -104,82 +99,35 @@ export const Services: React.FC<ServicesProps> = ({
     <section id="services" className={`py-20 md:py-24 bg-brand-50/30 ${!isPreview ? 'scroll-mt-28' : ''}`}>
       <div className="container mx-auto px-4 md:px-6">
         
-        {!onlyAcademy && (
-          <>
-            <div className="text-center mb-10 md:mb-14 animate-on-scroll">
-              <span className="text-brand-600 font-bold tracking-widest uppercase text-[10px] md:text-xs bg-white px-3 py-1 rounded-full shadow-sm border border-brand-100">{t.badge}</span>
-              <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mt-4 md:mt-6 mb-4">{t.title}</h2>
-              <p className="text-stone-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">{t.subtitle}</p>
-            </div>
-
-            <div className="max-w-4xl mx-auto mb-20 md:mb-28 flex flex-col gap-4 md:gap-5">
-              {t.data.map((service) => (
-                <ServiceCard 
-                  key={service.id}
-                  service={service}
-                  isOpen={openServiceId === service.id}
-                  onToggle={toggleService}
-                  onSchedule={handleSchedule}
-                  tCommon={{...t, paymentNotice: common.paymentNotice}}
-                />
-              ))}
-            </div>
-            
-            {isPreview && (
-              <div className="text-center mb-20">
-                <a 
-                  href="/tratamentos" 
-                  className="inline-flex items-center gap-2 text-brand-600 font-bold hover:gap-3 transition-all"
-                >
-                  Ver todos os tratamentos &rarr;
-                </a>
-              </div>
-            )}
-          </>
-        )}
-
-        {(!hideAcademy && (onlyAcademy || !isPreview)) && (
-          <div id="education" className="bg-stone-900 rounded-[2rem] md:rounded-[2.5rem] p-6 py-10 md:p-20 text-white scroll-mt-28 animate-on-scroll shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-brand-900/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-          
-          <div className="text-center mb-10 md:mb-16 relative z-10">
-             <h2 className="text-3xl md:text-5xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-brand-400 mb-4 md:mb-6">{t.academyTitle}</h2>
-             <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
-               {t.academyDesc}
-             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 relative z-10">
-            {t.education.map((edu, index) => (
-              <div key={index} className={`bg-stone-800/40 p-6 md:p-8 rounded-2xl border border-stone-700/50 backdrop-blur-sm hover:bg-stone-800 hover:border-brand-900/50 transition-all duration-300 hover:-translate-y-2 animate-on-scroll delay-${index * 100} group`}>
-                <div className="mb-4 md:mb-6 text-brand-400 group-hover:text-brand-300 transition-colors">
-                  <edu.icon size={32} className="md:w-[36px] md:h-[36px]" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 text-stone-100">{edu.title}</h3>
-                <p className="text-sm text-stone-400 mb-6 leading-relaxed">{edu.description}</p>
-                <ul className="space-y-3">
-                  {edu.items.map((item, idx) => (
-                    <li key={idx} className="text-sm text-stone-300 flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-brand-500 rounded-full mt-1.5 flex-shrink-0" />
-                      <span className="flex-1">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 md:mt-16 text-center animate-on-scroll delay-300 relative z-10">
-            <Button 
-              onClick={() => handleSchedule('academy')}
-              className="bg-brand-600 hover:bg-brand-500 text-white border-none shadow-xl shadow-brand-900/30 text-base md:text-lg px-8 py-3 md:px-10 md:py-4 rounded-full w-full sm:w-auto"
-            >
-              {t.academyBtn} <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <p className="text-stone-500 text-[10px] md:text-xs mt-4 md:mt-5 uppercase tracking-wide">{t.academyNote}</p>
-          </div>
+        <div className="text-center mb-10 md:mb-14 animate-on-scroll">
+          <span className="text-brand-600 font-bold tracking-widest uppercase text-[10px] md:text-xs bg-white px-3 py-1 rounded-full shadow-sm border border-brand-100">{t.badge}</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mt-4 md:mt-6 mb-4">{t.title}</h2>
+          <p className="text-stone-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">{t.subtitle}</p>
         </div>
-      )}
+
+        <div className="max-w-4xl mx-auto mb-20 md:mb-28 flex flex-col gap-4 md:gap-5">
+          {t.data.map((service) => (
+            <ServiceCard 
+              key={service.id}
+              service={service}
+              isOpen={openServiceId === service.id}
+              onToggle={toggleService}
+              onSchedule={handleSchedule}
+              tCommon={{...t, paymentNotice: common.paymentNotice}}
+            />
+          ))}
+        </div>
+        
+        {isPreview && (
+          <div className="text-center mb-20">
+            <a 
+              href="/tratamentos" 
+              className="inline-flex items-center gap-2 text-brand-600 font-bold hover:gap-3 transition-all"
+            >
+              Ver todos os tratamentos &rarr;
+            </a>
+          </div>
+        )}
 
       </div>
     </section>

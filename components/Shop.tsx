@@ -1,23 +1,28 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { BookOpen, ShoppingBag, ExternalLink, Sparkles, CreditCard, Check } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShoppingBag, CreditCard, Check, ShoppingCart, Info, ExternalLink } from 'lucide-react';
 import { Button } from './Button';
-import { ASSETS, STRIPE_EBOOK_URL } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useCart } from '../contexts/CartContext';
 import { CONTENT } from '../content';
 import { OptimizedImage } from './OptimizedImage';
+import { ATOMY_PRODUCTS, Product } from '../src/data/products';
+import { motion, AnimatePresence } from 'motion/react';
 
 export const Shop: React.FC = () => {
   const { language } = useLanguage();
+  const { addToCart, totalItems, totalPrice, setIsCartOpen } = useCart();
   const t = CONTENT[language].shop;
-  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [addedId, setAddedId] = useState<string | null>(null);
 
-  const handleOrder = (productId: string) => {
-    navigate('/contactos', { state: { interest: productId } });
-  };
+  const filteredProducts = ATOMY_PRODUCTS.filter(p => 
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  const handleBuyEbook = () => {
-    window.open(STRIPE_EBOOK_URL, '_blank', 'noopener,noreferrer');
+  const handleAddToCart = (product: Product) => {
+    addToCart(product);
+    setAddedId(product.id);
+    setTimeout(() => setAddedId(null), 2000);
   };
 
   return (
@@ -26,6 +31,21 @@ export const Shop: React.FC = () => {
         <div className="text-center mb-10 md:mb-16 animate-on-scroll">
           <span className="text-brand-600 font-bold tracking-widest uppercase text-[10px] md:text-xs border border-brand-100 px-3 py-1 rounded-full bg-white">{t.badge}</span>
           <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mt-4 md:mt-6 mb-4">{t.title}</h2>
+          <p className="text-stone-500 max-w-2xl mx-auto text-sm md:text-base">
+            Descubra a excelência dos produtos Atomy, agora disponíveis para si.
+          </p>
+        </div>
+
+        <div className="max-w-md mx-auto mb-12">
+          <div className="relative">
+            <input 
+              type="text" 
+              placeholder="Pesquisar produtos..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-6 py-3 rounded-full border border-stone-200 focus:ring-2 focus:ring-brand-200 focus:border-brand-400 outline-none transition-all shadow-sm"
+            />
+          </div>
         </div>
 
         <div className="flex justify-center mb-10 md:mb-16 animate-on-scroll">
@@ -35,127 +55,116 @@ export const Shop: React.FC = () => {
              </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-stretch">
-          
-          <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl border border-stone-100 flex flex-col relative overflow-hidden group transition-all duration-300 h-full">
-             <div className="relative h-48 md:h-56 mb-6 md:mb-8 bg-brand-50/50 rounded-2xl overflow-hidden group-hover:bg-brand-50 transition-colors">
-                 <OptimizedImage 
-                    src={ASSETS.ebook} 
-                    alt="Capa do Ebook" 
-                    className="w-full h-full object-contain shadow-sm transform group-hover:scale-105 transition-transform duration-500"
-                  />
-             </div>
-             
-             <div className="flex-1 flex flex-col">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-[10px] font-bold uppercase tracking-wide self-start mb-4">
-                    <BookOpen size={12} /> {t.ebook.badge}
-                </div>
-                <h3 className="text-xl md:text-2xl font-serif text-stone-900 mb-3 leading-tight">{t.ebook.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-6 md:mb-8 flex-1">
-                    {t.ebook.desc}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
+          {filteredProducts.map((product) => (
+            <motion.div 
+              layout
+              key={product.id}
+              className="bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl border border-stone-100 flex flex-col relative overflow-hidden group transition-all duration-300 h-full"
+            >
+              <div className="relative h-48 md:h-56 mb-6 bg-stone-50 rounded-2xl overflow-hidden group-hover:bg-brand-50 transition-colors">
+                <OptimizedImage 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              
+              <div className="flex-1 flex flex-col">
+                <h3 className="text-lg font-serif text-stone-900 mb-2 leading-tight group-hover:text-brand-700 transition-colors">
+                  {product.name}
+                </h3>
+                <p className="text-stone-400 text-xs mb-4 line-clamp-2">
+                  {product.description}
                 </p>
-                <div className="mt-auto">
-                  <Button 
-                    variant="outline" 
-                    onClick={handleBuyEbook}
-                    fullWidth
-                    className="border-stone-200 text-stone-600 hover:bg-stone-50 hover:text-stone-900 hover:border-stone-300 text-sm"
-                  >
-                    {t.ebook.btn} <ExternalLink className="ml-2 w-3 h-3" />
-                  </Button>
-                </div>
-             </div>
-          </div>
-
-          <div className="bg-stone-900 text-white rounded-3xl p-1 shadow-2xl flex flex-col relative overflow-hidden group transform md:-translate-y-4 z-10 h-full mt-4 md:mt-0">
-             <div className="absolute inset-0 bg-gradient-to-b from-gold-400 to-brand-900 rounded-3xl p-[1px] opacity-30"></div>
-             
-             <div className="bg-stone-900 rounded-[22px] p-6 h-full flex flex-col relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 
-               <div className="relative h-48 md:h-56 mb-6 md:mb-8 bg-stone-800 rounded-2xl overflow-hidden border border-stone-700/50">
-                   <OptimizedImage 
-                      src={ASSETS.retinol} 
-                      alt="Kit Retinol" 
-                      className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-4 left-4">
-                         <span className="text-gold-400 font-serif italic text-lg flex items-center gap-2">
-                           <Sparkles size={16} /> Premium Care
-                         </span>
-                    </div>
-               </div>
-
-               <div className="flex-1 flex flex-col relative z-10">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 rounded-full text-[10px] font-bold uppercase tracking-wide self-start mb-4">
-                      <Sparkles size={12} /> {t.kit.badge}
+                <div className="mt-auto">
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-xl font-bold text-stone-900">{product.price.toFixed(2)}€</span>
+                    {product.pricePer && (
+                      <span className="text-[10px] text-stone-400 font-medium">{product.pricePer}</span>
+                    )}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-serif text-white mb-3">{t.kit.title}</h3>
-                  <p className="text-stone-300 text-sm leading-relaxed mb-6">
-                      {t.kit.desc}
-                  </p>
-                  <ul className="space-y-3 mb-8 bg-stone-800/40 p-4 md:p-5 rounded-xl border border-stone-700/50 backdrop-blur-sm">
-                      {t.kit.items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm text-stone-200">
-                              <Check size={16} className="text-gold-500 mt-0.5 flex-shrink-0" />
-                              <span>{item}</span>
-                          </li>
-                      ))}
-                  </ul>
-                  <div className="mt-auto">
+
+                  <div className="flex gap-2">
                     <Button 
                       variant="primary" 
-                      onClick={() => handleOrder('kit_retinol')}
+                      onClick={() => handleAddToCart(product)}
                       fullWidth
-                      className="bg-gradient-to-r from-brand-700 to-brand-600 hover:from-brand-600 hover:to-brand-500 border-none shadow-lg shadow-brand-900/50 py-3 md:py-4 text-sm md:text-base"
+                      className={`text-xs py-2.5 rounded-xl transition-all ${
+                        addedId === product.id 
+                          ? 'bg-emerald-500 hover:bg-emerald-600' 
+                          : 'bg-stone-900 hover:bg-stone-800'
+                      }`}
                     >
-                      {t.kit.btn}
+                      {addedId === product.id ? (
+                        <><Check size={14} className="mr-2" /> Adicionado</>
+                      ) : (
+                        <><ShoppingCart size={14} className="mr-2" /> Adicionar</>
+                      )}
                     </Button>
+                    <a 
+                      href={product.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl border border-stone-200 text-stone-400 hover:text-brand-600 hover:border-brand-200 transition-all"
+                      title="Ver detalhes"
+                    >
+                      <ExternalLink size={16} />
+                    </a>
                   </div>
-               </div>
-             </div>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl border border-stone-100 flex flex-col relative overflow-hidden group transition-all duration-300 h-full mt-4 md:mt-0">
-             <div className="relative h-48 md:h-56 mb-6 md:mb-8 bg-stone-50 rounded-2xl overflow-hidden p-2">
-                 <OptimizedImage 
-                    src={ASSETS.products} 
-                    alt="Produtos Dra Beleza" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-                  />
-             </div>
-
-             <div className="flex-1 flex flex-col">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 text-brand-600 rounded-full text-[10px] font-bold uppercase tracking-wide self-start mb-4">
-                    <ShoppingBag size={12} /> {t.products.badge}
+                  
+                  <div className="mt-3 flex items-center gap-1.5 text-[10px] text-stone-400">
+                    <Info size={10} />
+                    <span>{product.sales}</span>
+                  </div>
                 </div>
-                <h3 className="text-xl md:text-2xl font-serif text-stone-900 mb-3 leading-tight">{t.products.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-6 flex-1">
-                    {t.products.desc}
-                </p>
-                <ul className="space-y-2 mb-8">
-                  {t.products.items.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-stone-500">
-                        <span className="w-1.5 h-1.5 bg-brand-300 rounded-full"/> {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto">
-                  <Button 
-                    variant="primary" 
-                    onClick={() => handleOrder('products')}
-                    fullWidth
-                    className="bg-stone-800 hover:bg-stone-700 shadow-stone-200 text-sm"
-                  >
-                    {t.products.btn}
-                  </Button>
-                </div>
-             </div>
-          </div>
-
+              </div>
+            </motion.div>
+          ))}
         </div>
+        
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-stone-400">Nenhum produto encontrado para "{searchTerm}"</p>
+            <Button 
+              variant="outline" 
+              onClick={() => setSearchTerm('')}
+              className="mt-4"
+            >
+              Limpar pesquisa
+            </Button>
+          </div>
+        )}
       </div>
+
+      <AnimatePresence>
+        {totalItems > 0 && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40"
+          >
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="bg-brand-600 text-white px-8 py-4 rounded-full shadow-2xl shadow-brand-200 flex items-center gap-3 hover:bg-brand-700 transition-all active:scale-95 group"
+            >
+              <div className="relative">
+                <ShoppingCart size={20} />
+                <span className="absolute -top-2 -right-2 bg-white text-brand-600 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                  {totalItems}
+                </span>
+              </div>
+              <span className="font-bold">Ver Carrinho</span>
+              <div className="w-px h-4 bg-white/20 mx-1"></div>
+              <span className="font-medium opacity-90 group-hover:opacity-100 transition-opacity">
+                {totalPrice.toFixed(2)}€
+              </span>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

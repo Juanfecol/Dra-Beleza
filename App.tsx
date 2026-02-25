@@ -6,13 +6,13 @@ import { WhatsAppButton } from './components/WhatsAppButton';
 import { BookingWidget } from './components/BookingWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { CartProvider, useCart } from './contexts/CartContext';
 import { MouseTrail } from './components/MouseTrail';
+import { CartDrawer } from './components/CartDrawer';
 import { Home } from './src/pages/Home';
 import { AboutPage } from './src/pages/AboutPage';
 import { StoriesPage } from './src/pages/StoriesPage';
 import { TreatmentsPage } from './src/pages/TreatmentsPage';
-import { AcademyPage } from './src/pages/AcademyPage';
-import { EventsPage } from './src/pages/EventsPage';
 import { ShopPage } from './src/pages/ShopPage';
 import { ContactPage } from './src/pages/ContactPage';
 import { AnimatePresence } from 'motion/react';
@@ -29,6 +29,7 @@ const ScrollToTop = () => {
 
 function AppContent() {
   const location = useLocation();
+  const { isCartOpen, setIsCartOpen } = useCart();
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -66,14 +67,13 @@ function AppContent() {
             <Route path="/sobre" element={<AboutPage />} />
             <Route path="/historias" element={<StoriesPage />} />
             <Route path="/tratamentos" element={<TreatmentsPage />} />
-            <Route path="/academy" element={<AcademyPage />} />
-            <Route path="/eventos" element={<EventsPage />} />
             <Route path="/loja" element={<ShopPage />} />
             <Route path="/contactos" element={<ContactPage />} />
           </Routes>
         </AnimatePresence>
       </main>
       <Footer />
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <WhatsAppButton />
       <BookingWidget />
       <CookieConsent />
@@ -84,9 +84,11 @@ function AppContent() {
 function App() {
   return (
     <LanguageProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <CartProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </CartProvider>
     </LanguageProvider>
   );
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram } from 'lucide-react';
+import { Menu, X, Instagram, ShoppingCart } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { NAVIGATION_LINKS, ASSETS } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useCart } from '../contexts/CartContext';
 import { CONTENT } from '../content';
 import { trackEvent } from '../src/services/pixelService';
 
@@ -10,6 +11,7 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const { totalItems, setIsCartOpen } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
   const t = CONTENT[language];
@@ -101,6 +103,19 @@ export const Header: React.FC = () => {
               <Instagram size={18} />
             </a>
 
+            <button 
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 text-stone-500 hover:text-brand-600 hover:bg-brand-50 rounded-full transition-all ml-1"
+              aria-label="Carrinho"
+            >
+              <ShoppingCart size={18} />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-brand-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+
             <button
               onClick={() => {
                 trackEvent('Contact', { content_name: 'Header Agendar Button' });
@@ -113,6 +128,19 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="lg:hidden flex items-center gap-4 relative z-50">
+             <button 
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 text-stone-800 focus:outline-none active:scale-90 transition-transform"
+              aria-label="Carrinho"
+            >
+              <ShoppingCart size={20} />
+              {totalItems > 0 && (
+                <span className="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+
              <div className="flex items-center gap-1 bg-stone-100/80 backdrop-blur rounded-full p-1">
                 <button
                     onClick={() => setLanguage('pt')}

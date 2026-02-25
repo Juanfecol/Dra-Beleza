@@ -11,7 +11,7 @@ export const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbwATXL
 export const STRIPE_EBOOK_URL = "https://buy.stripe.com/00waEX7TP1PTgD0dP2ebu06";
 
 export const CONTACT_INFO = {
-  address: "Av. da República, Amadora, Portugal",
+  address: "Rua Branquinho da Fonseca, 6C - Loja C, 2700-126 Amadora, Portugal",
   phone: "+351 910 166 268",
   whatsapp: "+351 910 166 268",
   whatsappLink: "https://wa.me/351910166268",
@@ -32,8 +32,6 @@ export const NAVIGATION_LINKS = [
   { id: 'about', href: '/sobre' },
   { id: 'stories', href: '/historias' },
   { id: 'services', href: '/tratamentos' },
-  { id: 'academy', href: '/academy' },
-  { id: 'events', href: '/eventos' },
   { id: 'shop', href: '/loja' },
   { id: 'contact', href: '/contactos' },
 ];
