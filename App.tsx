@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { BookingWidget } from './components/BookingWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { MouseTrail } from './components/MouseTrail';
@@ -14,13 +15,14 @@ import { AcademyPage } from './src/pages/AcademyPage';
 import { EventsPage } from './src/pages/EventsPage';
 import { ShopPage } from './src/pages/ShopPage';
 import { ContactPage } from './src/pages/ContactPage';
-import { Contact } from './components/Contact';
 import { AnimatePresence } from 'motion/react';
+import { trackPageView } from './src/services/pixelService';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    trackPageView();
   }, [pathname]);
   return null;
 };
@@ -73,6 +75,7 @@ function AppContent() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <BookingWidget />
       <CookieConsent />
     </div>
   );

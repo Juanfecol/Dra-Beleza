@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { CONTACT_INFO, ASSETS } from '../constants';
-import { Phone, MapPin, Instagram, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Instagram, MessageCircle, Calendar } from 'lucide-react';
 import { LeadForm } from './LeadForm';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 import { LegalModals } from './LegalModals';
+import { trackEvent } from '../src/services/pixelService';
 
 export const Contact: React.FC = () => {
   const { language } = useLanguage();
@@ -12,11 +13,9 @@ export const Contact: React.FC = () => {
   const [openLegal, setOpenLegal] = useState<'privacy' | 'terms' | 'ral' | 'ers' | 'cookies' | null>(null);
 
   const handleWhatsAppClick = () => {
-    if ((window as any).fbq) {
-      (window as any).fbq('track', 'Contact', {
-        content_name: 'Footer WhatsApp Button'
-      });
-    }
+    trackEvent('Contact', {
+      content_name: 'Contact Section WhatsApp Button'
+    });
   };
 
   return (
@@ -69,7 +68,7 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-wrap gap-3">
               <a 
                 href={CONTACT_INFO.whatsappLink} 
                 target="_blank" 
@@ -79,6 +78,15 @@ export const Contact: React.FC = () => {
               >
                 <MessageCircle /> {t.whatsappBtn}
               </a>
+              <button 
+                onClick={() => {
+                  trackEvent('Contact', { content_name: 'Contact Section Agendar Online Button' });
+                  (window as any).openBookingWidget?.();
+                }}
+                className="inline-flex items-center gap-2 bg-brand-600 text-white px-6 py-3 rounded-full font-bold hover:bg-brand-700 transition-transform hover:scale-105 shadow-lg shadow-brand-200 text-sm md:text-base"
+              >
+                <Calendar size={18} /> Agendar Online
+              </button>
             </div>
 
             {/* Simple Image Integration */}

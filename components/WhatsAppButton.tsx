@@ -1,13 +1,12 @@
 import React from 'react';
 import { CONTACT_INFO } from '../constants';
+import { trackEvent } from '../src/services/pixelService';
 
 export const WhatsAppButton: React.FC = () => {
   const handleContactClick = () => {
-    if ((window as any).fbq) {
-      (window as any).fbq('track', 'Contact', {
-        content_name: 'WhatsApp Float Button'
-      });
-    }
+    trackEvent('Contact', {
+      content_name: 'WhatsApp Float Button'
+    });
   };
 
   return (

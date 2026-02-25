@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { NAVIGATION_LINKS, ASSETS } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
+import { trackEvent } from '../src/services/pixelService';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,6 +100,16 @@ export const Header: React.FC = () => {
             >
               <Instagram size={18} />
             </a>
+
+            <button
+              onClick={() => {
+                trackEvent('Contact', { content_name: 'Header Agendar Button' });
+                (window as any).openBookingWidget?.();
+              }}
+              className="ml-4 bg-brand-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-700 transition-all shadow-md shadow-brand-200 active:scale-95"
+            >
+              Agendar
+            </button>
           </nav>
 
           <div className="lg:hidden flex items-center gap-4 relative z-50">

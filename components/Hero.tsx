@@ -6,6 +6,7 @@ import { ASSETS, getOptimizedUrl } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 import { OptimizedImage } from './OptimizedImage';
+import { trackEvent } from '../src/services/pixelService';
 
 export const Hero: React.FC = () => {
   const { language } = useLanguage();
@@ -15,7 +16,14 @@ export const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   const handleScheduleClick = () => {
-    navigate('/contactos');
+    trackEvent('Contact', {
+      content_name: 'Hero CTA Main'
+    });
+    if ((window as any).openBookingWidget) {
+      (window as any).openBookingWidget();
+    } else {
+      navigate('/contactos');
+    }
   };
 
   useEffect(() => {
@@ -63,7 +71,7 @@ export const Hero: React.FC = () => {
               <Button onClick={handleScheduleClick} className="group text-sm md:text-base w-full sm:w-auto">
                 {t.ctaMain} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
-              <Button variant="outline" href="/tratamentos" className="text-sm md:text-base w-full sm:w-auto">
+              <Button variant="outline" href="/tratamentos" className="text-sm md:text-base w-full sm:w-auto" onClick={() => trackEvent('ViewContent', { content_name: 'Hero CTA Secondary' })}>
                 {t.ctaSecondary}
               </Button>
             </div>

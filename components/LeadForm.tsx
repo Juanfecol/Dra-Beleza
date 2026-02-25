@@ -5,6 +5,7 @@ import { Loader2, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
 import { GOOGLE_SHEETS_URL } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
+import { trackEvent } from '../src/services/pixelService';
 
 const INTEREST_MAP: Record<string, keyof typeof CONTENT['pt']['form']['options']> = {
   'consultation': 'opt1',
@@ -100,13 +101,11 @@ export const LeadForm: React.FC = () => {
 
       setStatus('success');
       
-      if ((window as any).fbq) {
-        (window as any).fbq('track', 'Lead', {
-          content_name: formState.interest,
-          value: 0.00,
-          currency: 'EUR'
-        });
-      }
+      trackEvent('Lead', {
+        content_name: formState.interest,
+        value: 0.00,
+        currency: 'EUR'
+      });
 
       setFormState({
         name: '',
