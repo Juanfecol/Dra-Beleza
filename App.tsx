@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { WhatsAppButton } from './components/WhatsAppButton';
+import { FloatingActions } from './components/FloatingActions';
 import { BookingWidget } from './components/BookingWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -74,7 +74,7 @@ function AppContent() {
       </main>
       <Footer />
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      <WhatsAppButton />
+      <FloatingActions />
       <BookingWidget />
       <CookieConsent />
     </div>

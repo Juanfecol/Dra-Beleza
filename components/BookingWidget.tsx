@@ -24,18 +24,6 @@ export const BookingWidget: React.FC = () => {
 
   return (
     <>
-      {/* Floating Button - Smaller and Brand Styled */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 z-40 bg-brand-600 text-white p-3 md:p-4 rounded-full shadow-xl hover:bg-brand-700 transition-all hover:scale-105 group flex items-center gap-2 border border-brand-400/30"
-        aria-label="Agendar Cita"
-      >
-        <Calendar size={20} className="md:w-6 md:h-6" />
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap font-bold text-xs md:text-sm">
-          Agendar Cita
-        </span>
-      </button>
-
       {/* Modal Overlay */}
       <AnimatePresence>
         {isOpen && (
