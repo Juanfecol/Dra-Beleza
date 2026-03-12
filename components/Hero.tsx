@@ -115,9 +115,9 @@ export const Hero: React.FC = () => {
                 
                 <div className="absolute inset-0 bg-brand-900/5 pointer-events-none" />
                 
-                <div className="absolute bottom-6 md:bottom-8 left-0 w-full flex justify-center hidden md:flex z-20 px-4 pointer-events-none">
-                   <div className="w-full max-w-[95%] md:max-w-[90%] glass-panel p-4 md:p-5 rounded-2xl shadow-lg animate-float backdrop-blur-md bg-white/60 border-white/40 pointer-events-auto">
-                      <p className="text-stone-800 font-serif italic text-center leading-relaxed text-xs md:text-sm lg:text-base">
+                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 w-full flex justify-center z-20 px-4 pointer-events-none">
+                   <div className="w-full max-w-[95%] sm:max-w-[90%] glass-panel p-3 sm:p-4 md:p-5 rounded-2xl shadow-lg animate-float backdrop-blur-md bg-white/60 border-white/40 pointer-events-auto">
+                      <p className="text-stone-800 font-serif italic text-center leading-relaxed text-[10px] sm:text-xs md:text-sm lg:text-base">
                         {t.quote}
                       </p>
                    </div>

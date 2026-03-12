@@ -33,11 +33,26 @@ const VideoItem: React.FC<{ src: string }> = ({ src }) => {
     }
   };
 
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+        setIsMuted(false);
+        videoRef.current.muted = false;
+      }
+    }
+  };
+
   return (
     <div 
-      className="relative w-[240px] h-[420px] md:w-[280px] md:h-[500px] flex-shrink-0 rounded-2xl overflow-hidden shadow-xl border border-stone-200 group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:z-20 bg-black mx-3 md:mx-4"
+      className="relative w-[240px] h-[420px] md:w-[280px] md:h-[500px] flex-shrink-0 rounded-2xl overflow-hidden shadow-xl border border-stone-200 group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:z-20 bg-black mx-3 md:mx-4 cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={togglePlay}
     >
       <video
         ref={videoRef}

@@ -17,7 +17,12 @@ export const Home: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       <Hero />
+      <About isPreview={false} />
+      <Services isPreview={false} />
       <Events />
+      <Shop />
+      <Testimonials />
+      <Contact />
     </motion.div>
   );
 };

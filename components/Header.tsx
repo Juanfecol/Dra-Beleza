@@ -40,18 +40,18 @@ export const Header: React.FC = () => {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out border-b ${
           isScrolled || isMobileMenuOpen 
-            ? 'bg-white/80 backdrop-blur-md shadow-sm py-3 border-stone-100' 
+            ? 'bg-white/90 backdrop-blur-md shadow-sm py-3 border-stone-100' 
             : 'bg-transparent py-5 border-transparent'
         }`}
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
+        <div className="container mx-auto px-4 flex items-center justify-between">
           
           <Link 
             to="/" 
             onClick={handleNavClick}
-            className="relative z-50 flex-shrink-0 group"
+            className="relative z-[101] flex-shrink-0 group"
           >
             <img 
               src={ASSETS.logo} 
@@ -127,21 +127,21 @@ export const Header: React.FC = () => {
             </button>
           </nav>
 
-          <div className="lg:hidden flex items-center gap-4 relative z-50">
+          <div className="lg:hidden flex items-center gap-1.5 sm:gap-3 relative z-[101]">
              <button 
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 text-stone-800 focus:outline-none active:scale-90 transition-transform"
+              className="relative p-2 text-stone-800 focus:outline-none active:scale-90 transition-transform bg-white/50 rounded-full border border-stone-100 shadow-sm"
               aria-label="Carrinho"
             >
-              <ShoppingCart size={20} />
+              <ShoppingCart size={18} />
               {totalItems > 0 && (
-                <span className="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                <span className="absolute -top-1 -right-1 bg-brand-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
                   {totalItems}
                 </span>
               )}
             </button>
 
-             <div className="flex items-center gap-1 bg-stone-100/80 backdrop-blur rounded-full p-1">
+             <div className="flex items-center gap-1 bg-stone-100/80 backdrop-blur rounded-full p-1 border border-stone-200/50">
                 <button
                     onClick={() => setLanguage('pt')}
                     className={`px-2 py-1 rounded-full text-[10px] font-bold transition-all duration-300 ${language === 'pt' ? 'bg-white text-brand-600 shadow-sm' : 'text-stone-500'}`}
@@ -157,17 +157,17 @@ export const Header: React.FC = () => {
             </div>
 
             <button 
-              className="text-stone-800 p-2 focus:outline-none active:scale-90 transition-transform"
+              className="text-stone-800 w-10 h-10 flex items-center justify-center focus:outline-none active:scale-90 transition-transform bg-white/90 rounded-full border border-stone-200 shadow-sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
-              {isMobileMenuOpen ? <X /> : <Menu />}
+              {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         <div 
-          className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-t border-stone-100 lg:hidden transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1) origin-top ${
+          className={`absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-xl border-t border-stone-100 lg:hidden transition-all duration-300 ease-in-out origin-top ${
             isMobileMenuOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-0 invisible'
           }`}
           style={{ maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}

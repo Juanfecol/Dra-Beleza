@@ -90,11 +90,11 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Simple Image Integration */}
-            <div className="pt-8 hidden lg:block">
+            <div className="pt-8 block">
               <img 
                 src={ASSETS.contact} 
                 alt="Dra. Beleza" 
-                className="w-full h-64 object-cover rounded-2xl shadow-lg"
+                className="w-full h-48 md:h-64 object-cover rounded-2xl shadow-lg"
                 referrerPolicy="no-referrer"
               />
             </div>
