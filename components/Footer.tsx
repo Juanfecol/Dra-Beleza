@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
           <img 
             src={ASSETS.logo} 
             alt="Dra. Beleza" 
-            className="h-12 md:h-14 w-auto object-contain mb-8 brightness-0 invert opacity-90"
+            className="h-10 md:h-12 w-auto object-contain mb-8 brightness-0 invert opacity-90"
             referrerPolicy="no-referrer"
           />
           

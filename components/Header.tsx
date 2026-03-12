@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
             <img 
               src={ASSETS.logo} 
               alt="Dra. Beleza" 
-              className="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-7 md:h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               referrerPolicy="no-referrer"
             />
           </Link>
