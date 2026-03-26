@@ -76,12 +76,18 @@ export const LeadForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!agreed) return;
+    console.log("handleSubmit triggered");
+    if (!agreed) {
+      console.log("Form not agreed");
+      return;
+    }
     
     setStatus('submitting');
+    console.log("Status set to submitting");
 
     try {
-      await fetch('/api/contact', {
+      console.log("Attempting fetch to /api/contact");
+      const response = await fetch(`${window.location.origin}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +101,15 @@ export const LeadForm: React.FC = () => {
         })
       });
 
+      console.log("Fetch response status:", response.status);
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Fetch error:", errorData);
+        throw new Error(errorData.error || "Failed to send");
+      }
+
       setStatus('success');
+      console.log("Status set to success");
       
       trackEvent('Lead', {
         content_name: formState.interest,
