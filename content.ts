@@ -166,15 +166,15 @@ export const CONTENT = {
       badge: 'Tour Dra. Beleza',
       title: 'Próximos Eventos',
       subtitle: 'Experiências imersivas de conhecimento e beleza. Confira o calendário.',
-      calendarTitle: 'Calendário 2025',
+      calendarTitle: 'Calendário 2026',
       mapTitle: 'Localização',
       mapButton: 'Ver Mapa',
       lisboa: {
         location: 'LISBOA',
         title: 'Masterclass & Experiência',
-        date: '15 de Março de 2025',
-        month: 'MAR',
-        day: '15',
+        date: 'Proximamente',
+        month: '---',
+        day: '--',
         info: 'Mais Informações',
         btn: 'Pré-Inscrição',
         mapQuery: 'Lisboa, Portugal'
@@ -182,9 +182,9 @@ export const CONTENT = {
       madeira: {
         location: 'FUNCHAL, MADEIRA',
         title: 'Retiro de Beleza & Bem-Estar',
-        date: '12 a 15 de Dezembro 2025',
-        month: 'DEZ',
-        day: '12',
+        date: '24 a 27 de Março de 2026',
+        month: 'MAR',
+        day: '24',
         info: 'Mais Informações',
         btn: 'Pré-Registo',
         mapQuery: 'Funchal, Madeira'

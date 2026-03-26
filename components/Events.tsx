@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, Calendar, ArrowRight, Instagram, CalendarDays, Map as MapIcon, CreditCard } from 'lucide-react';
 import { Button } from './Button';
@@ -61,22 +62,32 @@ export const Events: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           
           <div className="relative bg-stone-800 rounded-3xl overflow-hidden shadow-2xl animate-on-scroll delay-100 group flex flex-col border border-brand-900/30 hover:border-brand-500/50 transition-colors duration-300 ring-1 ring-white/5">
-            <div className="relative w-full h-56 md:h-64 overflow-hidden">
-                <OptimizedImage 
-                  src={ASSETS.events.lisboa} 
-                  alt="Evento Lisboa" 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-800 to-transparent"></div>
-                
-                <div className="absolute top-4 left-4 z-20">
+            <div className="relative w-full overflow-hidden p-4">
+                <div className="flex overflow-hidden gap-4 snap-x snap-mandatory scrollbar-hide">
+                    <motion.div 
+                        className="flex gap-4"
+                        animate={{ x: ["0%", "-66.66%"] }}
+                        transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+                    >
+                        {[...ASSETS.events.lisboa, ...ASSETS.events.lisboa, ...ASSETS.events.lisboa].map((src, index) => (
+                            <div key={`${src}-${index}`} className="flex-none w-48 snap-center">
+                                <OptimizedImage 
+                                    src={src} 
+                                    alt={`Evento Lisboa ${index + 1}`} 
+                                    className="w-full aspect-[9/16] object-cover rounded-2xl transition-transform duration-1000 group-hover:scale-105"
+                                />
+                            </div>
+                        ))}
+                    </motion.div>
+                </div>
+                <div className="absolute top-8 left-8 z-20">
                     <div className="inline-flex items-center gap-2 bg-brand-900/80 backdrop-blur px-3 py-1.5 rounded-full text-brand-100 text-[10px] md:text-xs font-bold uppercase tracking-wide border border-brand-500/20">
                         <MapPin size={12} className="text-brand-400" /> {t.lisboa.location}
                     </div>
                 </div>
             </div>
             
-            <div className="p-6 md:p-8 flex-1 flex flex-col -mt-6 relative z-10">
+            <div className="p-6 md:p-8 flex-1 flex flex-col relative z-10">
                 <div className="flex items-start justify-between mb-4 md:mb-6">
                     <h3 className="text-xl md:text-2xl font-serif text-white leading-tight max-w-[75%]">{t.lisboa.title}</h3>
                     <div className="bg-brand-900/30 border border-brand-800/50 p-2 rounded-xl text-center min-w-[60px] md:min-w-[70px] backdrop-blur-sm">
@@ -132,22 +143,32 @@ export const Events: React.FC = () => {
           </div>
 
           <div className="relative bg-stone-800 rounded-3xl overflow-hidden shadow-2xl animate-on-scroll delay-200 group flex flex-col border border-brand-900/30 hover:border-brand-500/50 transition-colors duration-300 ring-1 ring-white/5">
-            <div className="relative w-full h-56 md:h-64 overflow-hidden">
-                <OptimizedImage 
-                  src={ASSETS.events.madeira} 
-                  alt="Evento Madeira" 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-800 to-transparent"></div>
-                
-                <div className="absolute top-4 left-4 z-20">
+            <div className="relative w-full overflow-hidden p-4">
+                <div className="flex overflow-hidden gap-4 snap-x snap-mandatory scrollbar-hide">
+                    <motion.div 
+                        className="flex gap-4"
+                        animate={{ x: ["0%", "-66.66%"] }}
+                        transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+                    >
+                        {[...ASSETS.events.madeira, ...ASSETS.events.madeira, ...ASSETS.events.madeira].map((src, index) => (
+                            <div key={`${src}-${index}`} className="flex-none w-48 snap-center">
+                                <OptimizedImage 
+                                    src={src} 
+                                    alt={`Evento Madeira ${index + 1}`} 
+                                    className="w-full aspect-[9/16] object-cover rounded-2xl transition-transform duration-1000 group-hover:scale-105"
+                                />
+                            </div>
+                        ))}
+                    </motion.div>
+                </div>
+                <div className="absolute top-8 left-8 z-20">
                     <div className="inline-flex items-center gap-2 bg-brand-900/80 backdrop-blur px-3 py-1.5 rounded-full text-brand-100 text-[10px] md:text-xs font-bold uppercase tracking-wide border border-brand-500/20">
                         <MapPin size={12} className="text-brand-400" /> {t.madeira.location}
                     </div>
                 </div>
             </div>
             
-            <div className="p-6 md:p-8 flex-1 flex flex-col -mt-6 relative z-10">
+            <div className="p-6 md:p-8 flex-1 flex flex-col relative z-10">
                 <div className="flex items-start justify-between mb-4 md:mb-6">
                     <h3 className="text-xl md:text-2xl font-serif text-white leading-tight max-w-[75%]">{t.madeira.title}</h3>
                     <div className="bg-brand-900/30 border border-brand-800/50 p-2 rounded-xl text-center min-w-[60px] md:min-w-[70px] backdrop-blur-sm">
@@ -161,9 +182,8 @@ export const Events: React.FC = () => {
                 </p>
 
                 <a 
-                    href="https://www.instagram.com/reel/DQ9xO5jiFHX/"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="#"
+                    onClick={(e) => {e.preventDefault(); handleEventClick('event_madeira')}}
                     className="text-xs text-stone-500 hover:text-brand-400 flex items-center gap-2 mb-6 transition-colors w-fit"
                 >
                     <Instagram size={14} /> {t.madeira.info} &rarr;

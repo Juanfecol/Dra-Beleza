@@ -68,8 +68,17 @@ export const ASSETS = {
   
   events: {
     bg: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop',
-    lisboa: 'https://images.unsplash.com/photo-1585208798174-6ced31f47353?q=80&w=1000&auto=format&fit=crop',
-    madeira: 'https://images.unsplash.com/photo-1626125345510-4703419649eb?q=80&w=1000&auto=format&fit=crop'
+    lisboa: [
+      'https://dra-beleza-pt.b-cdn.net/5.png'
+    ],
+    madeira: [
+      'https://dra-beleza-pt.b-cdn.net/0ba8e51b-18b7-417f-9363-30c5efc767b1.JPG',
+      'https://dra-beleza-pt.b-cdn.net/7ec42fa3-8f14-4ad4-961a-5006a909bc6d.JPG',
+      'https://dra-beleza-pt.b-cdn.net/7c8a65bf-b0a2-4cbd-ab52-d511b1982cd6.JPG',
+      'https://dra-beleza-pt.b-cdn.net/67b16ae4-0981-40ba-823d-b3214d9cac0c.JPG',
+      'https://dra-beleza-pt.b-cdn.net/03ed33a8-9933-4232-8405-668259fdbbc5.JPG',
+      'https://dra-beleza-pt.b-cdn.net/97fa47f9-69a7-4fd0-85f8-f9a4150b341e.JPG'
+    ]
   },
   
   ebook: 'https://dra-beleza-pt.b-cdn.net/ebook-beleza-regenerativa.jpg',
