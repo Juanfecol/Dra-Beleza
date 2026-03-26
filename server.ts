@@ -20,9 +20,11 @@ async function startServer() {
 
   // API routes
   app.post("/api/contact", async (req, res) => {
+    console.log("Received contact form submission:", req.body);
     const { name, phone, email, interest, message } = req.body;
 
     if (!process.env.SENDGRID_API_KEY || !process.env.SENDGRID_FROM_EMAIL) {
+      console.error("Email configuration missing. Key:", !!process.env.SENDGRID_API_KEY, "Email:", process.env.SENDGRID_FROM_EMAIL);
       return res.status(500).json({ error: "Email configuration missing" });
     }
 
@@ -67,7 +69,9 @@ async function startServer() {
     };
 
     try {
+      console.log("Attempting to send email via SendGrid...");
       await sgMail.send(msg);
+      console.log("Email sent successfully!");
       res.status(200).json({ success: true });
     } catch (error) {
       console.error("SendGrid error:", error);
