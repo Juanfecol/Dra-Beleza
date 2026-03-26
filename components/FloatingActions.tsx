@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Phone, MessageCircle, Calendar, X } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 import { trackEvent } from '../src/services/pixelService';
@@ -7,6 +8,8 @@ import { motion, AnimatePresence } from 'motion/react';
 export const FloatingActions: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showLabels, setShowLabels] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleWhatsAppClick = () => {
     trackEvent('Contact', { content_name: 'WhatsApp Floating Action' });
@@ -17,7 +20,7 @@ export const FloatingActions: React.FC = () => {
   };
 
   const handleBookingClick = () => {
-    (window as any).openBookingWidget?.();
+    navigate('/contactos');
   };
 
   // Show labels on hover for desktop
