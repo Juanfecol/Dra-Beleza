@@ -63,14 +63,14 @@ export const Events: React.FC = () => {
           
           <div className="relative bg-stone-800 rounded-3xl overflow-hidden shadow-2xl animate-on-scroll delay-100 group flex flex-col border border-brand-900/30 hover:border-brand-500/50 transition-colors duration-300 ring-1 ring-white/5">
             <div className="relative w-full overflow-hidden p-4">
-                <div className="flex overflow-hidden gap-4 snap-x snap-mandatory scrollbar-hide">
+                <div className="flex overflow-hidden snap-x snap-mandatory scrollbar-hide">
                     <motion.div 
-                        className="flex gap-4"
-                        animate={{ x: ["0%", "-66.66%"] }}
+                        className="flex"
+                        animate={{ x: ["0%", "-33.33%"] }}
                         transition={{ duration: 40, ease: "linear", repeat: Infinity }}
                     >
                         {[...ASSETS.events.lisboa, ...ASSETS.events.lisboa, ...ASSETS.events.lisboa].map((src, index) => (
-                            <div key={`${src}-${index}`} className="flex-none w-48 snap-center">
+                            <div key={`lisboa-${src}-${index}`} className="flex-none w-48 snap-center px-2">
                                 <OptimizedImage 
                                     src={src} 
                                     alt={`Evento Lisboa ${index + 1}`} 
@@ -144,14 +144,14 @@ export const Events: React.FC = () => {
 
           <div className="relative bg-stone-800 rounded-3xl overflow-hidden shadow-2xl animate-on-scroll delay-200 group flex flex-col border border-brand-900/30 hover:border-brand-500/50 transition-colors duration-300 ring-1 ring-white/5">
             <div className="relative w-full overflow-hidden p-4">
-                <div className="flex overflow-hidden gap-4 snap-x snap-mandatory scrollbar-hide">
+                <div className="flex overflow-hidden snap-x snap-mandatory scrollbar-hide">
                     <motion.div 
-                        className="flex gap-4"
-                        animate={{ x: ["0%", "-66.66%"] }}
+                        className="flex"
+                        animate={{ x: ["0%", "-33.33%"] }}
                         transition={{ duration: 40, ease: "linear", repeat: Infinity }}
                     >
                         {[...ASSETS.events.madeira, ...ASSETS.events.madeira, ...ASSETS.events.madeira].map((src, index) => (
-                            <div key={`${src}-${index}`} className="flex-none w-48 snap-center">
+                            <div key={`madeira-${src}-${index}`} className="flex-none w-48 snap-center px-2">
                                 <OptimizedImage 
                                     src={src} 
                                     alt={`Evento Madeira ${index + 1}`} 

@@ -100,7 +100,7 @@ export const Testimonials: React.FC = () => {
 
          <div className="flex w-max animate-marquee hover:[animation-play-state:paused] py-8 md:py-10">
             {videos.map((src, index) => (
-              <VideoItem key={`${index}-${src}`} src={src} />
+              <VideoItem key={`testimonial-${index}-${src}`} src={src} />
             ))}
          </div>
        </div>

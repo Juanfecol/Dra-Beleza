@@ -81,22 +81,18 @@ export const LeadForm: React.FC = () => {
     setStatus('submitting');
 
     try {
-      const params = new URLSearchParams();
-      params.append('name', formState.name);
-      params.append('phone', formState.phone);
-      params.append('email', formState.email);
-      params.append('interest', formState.interest);
-      params.append('message', formState.message);
-      params.append('created_at', new Date().toLocaleString(language === 'pt' ? 'pt-PT' : 'en-US'));
-      params.append('lang', language);
-      
-      await fetch(GOOGLE_SHEETS_URL, {
+      await fetch('/api/contact', {
         method: "POST",
-        mode: "no-cors", 
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: params.toString()
+        body: JSON.stringify({
+          name: formState.name,
+          phone: formState.phone,
+          email: formState.email,
+          interest: formState.interest,
+          message: formState.message
+        })
       });
 
       setStatus('success');

@@ -34,7 +34,7 @@ const ServiceCard = memo(({ service, isOpen, onToggle, onSchedule, tCommon }: an
               <div className="mt-5 md:mt-6 pt-5 md:pt-6 border-t border-stone-100">
                 <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 pb-6">
                   {service.items.map((item: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3 text-stone-600 text-sm md:text-base">
+                    <li key={`${service.id}-${idx}`} className="flex items-start gap-3 text-stone-600 text-sm md:text-base">
                       <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-brand-400 flex-shrink-0 mt-0.5" />
                       <span className="leading-snug font-medium">{item}</span>
                     </li>
