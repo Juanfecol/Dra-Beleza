@@ -1,10 +1,11 @@
 import React, { useState, memo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { CheckCircle2, ChevronDown, Plus, CreditCard } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
+import { CalendlyButton } from './CalendlyButton';
+import { trackEvent } from '../src/services/pixelService';
 
-const ServiceCard = memo(({ service, isOpen, onToggle, onSchedule, tCommon }: any) => {
+const ServiceCard = memo(({ service, isOpen, onToggle, tCommon }: any) => {
   return (
     <div 
       onClick={() => onToggle(service.id)}
@@ -46,15 +47,13 @@ const ServiceCard = memo(({ service, isOpen, onToggle, onSchedule, tCommon }: an
                         <CreditCard size={14} className="text-brand-500" /> 
                         <span className="font-medium text-stone-600">{tCommon.paymentNotice}</span>
                     </div>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSchedule('consultation');
+                    <CalendlyButton 
+                      onClick={() => {
+                        trackEvent('Contact', { content_name: 'Service Section Schedule Button' });
                       }}
                       className="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white text-xs md:text-sm font-bold uppercase tracking-wide transition-all py-2.5 px-6 rounded-full shadow-lg shadow-brand-200 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
-                    >
-                      {tCommon.scheduleBtn} &rarr;
-                    </button>
+                      text={tCommon.scheduleBtn}
+                    />
                 </div>
               </div>
           </div>
@@ -85,8 +84,6 @@ export const Services: React.FC<ServicesProps> = ({
   const t = CONTENT[language].services;
   const common = CONTENT[language];
 
-  const navigate = useNavigate();
-
   const toggleService = (id: string) => {
     setOpenServiceId(prev => prev === id ? null : id);
   };
@@ -112,8 +109,7 @@ export const Services: React.FC<ServicesProps> = ({
               service={service}
               isOpen={openServiceId === service.id}
               onToggle={toggleService}
-              onSchedule={handleSchedule}
-              tCommon={{...t, paymentNotice: common.paymentNotice}}
+              tCommon={{...t, paymentNotice: common.paymentNotice, scheduleBtn: t.scheduleBtn}}
             />
           ))}
         </div>

@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Phone, MessageCircle, Calendar, X } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 import { trackEvent } from '../src/services/pixelService';
 import { motion, AnimatePresence } from 'motion/react';
+import { CalendlyButton } from './CalendlyButton';
 
 export const FloatingActions: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [showLabels, setShowLabels] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleWhatsAppClick = () => {
     trackEvent('Contact', { content_name: 'WhatsApp Floating Action' });
@@ -17,10 +15,6 @@ export const FloatingActions: React.FC = () => {
 
   const handlePhoneClick = () => {
     trackEvent('Contact', { content_name: 'Phone Floating Action' });
-  };
-
-  const handleBookingClick = () => {
-    navigate('/contactos');
   };
 
   // Show labels on hover for desktop
@@ -41,6 +35,7 @@ export const FloatingActions: React.FC = () => {
       <AnimatePresence>
         {/* Booking Button */}
         <motion.div
+          key="booking"
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -51,17 +46,15 @@ export const FloatingActions: React.FC = () => {
               Agendar Consulta
             </span>
           )}
-          <button
-            onClick={handleBookingClick}
-            className="w-12 h-12 md:w-14 md:h-14 bg-brand-600 text-white rounded-full shadow-lg hover:shadow-brand-200/50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
+          <CalendlyButton
+            className="w-12 h-12 md:w-14 md:h-14 bg-[#d32f2f] text-white rounded-full shadow-lg hover:shadow-[#d32f2f]/50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group !p-0 !rounded-full"
             aria-label="Agendar Consulta"
-          >
-            <Calendar size={22} className="group-hover:scale-110 transition-transform" />
-          </button>
+          />
         </motion.div>
 
         {/* Phone Button */}
         <motion.div
+          key="phone"
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -84,6 +77,7 @@ export const FloatingActions: React.FC = () => {
 
         {/* WhatsApp Button */}
         <motion.div
+          key="whatsapp"
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.3 }}

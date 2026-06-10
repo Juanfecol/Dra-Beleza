@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { CONTACT_INFO, ASSETS } from '../constants';
-import { Phone, MapPin, Instagram, MessageCircle, Calendar } from 'lucide-react';
+import { Phone, MapPin, Instagram, MessageCircle } from 'lucide-react';
 import { LeadForm } from './LeadForm';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 import { LegalModals } from './LegalModals';
 import { trackEvent } from '../src/services/pixelService';
+import { CalendlyButton } from './CalendlyButton';
 
 export const Contact: React.FC = () => {
   const { language } = useLanguage();
   const t = CONTENT[language].contact;
   const [openLegal, setOpenLegal] = useState<'privacy' | 'terms' | 'ral' | 'ers' | 'cookies' | null>(null);
-
-  const navigate = useNavigate();
 
   const handleWhatsAppClick = () => {
     trackEvent('Contact', {
@@ -81,15 +79,13 @@ export const Contact: React.FC = () => {
               >
                 <MessageCircle /> {t.whatsappBtn}
               </a>
-              <button 
+              <CalendlyButton 
+                text="Agendar Online"
                 onClick={() => {
                   trackEvent('Contact', { content_name: 'Contact Section Agendar Online Button' });
-                  navigate('/contactos');
                 }}
                 className="inline-flex items-center gap-2 bg-brand-600 text-white px-6 py-3 rounded-full font-bold hover:bg-brand-700 transition-transform hover:scale-105 shadow-lg shadow-brand-200 text-sm md:text-base"
-              >
-                <Calendar size={18} /> Agendar Online
-              </button>
+              />
             </div>
 
             {/* Simple Image Integration */}

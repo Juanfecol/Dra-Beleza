@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useForm, ValidationError } from '@formspree/react';
 import { Button } from './Button';
-import { Loader2, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
-import { GOOGLE_SHEETS_URL } from '../constants';
+import { CheckCircle, AlertCircle, ShieldCheck, Loader2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 import { trackEvent } from '../src/services/pixelService';
@@ -24,7 +24,7 @@ export const LeadForm: React.FC = () => {
   const location = useLocation();
   const t = CONTENT[language].form;
   
-  const prevLanguageRef = useRef(language);
+  const [state, handleSubmit] = useForm('xpqelygq');
 
   const [formState, setFormState] = useState({
     name: '',
@@ -35,29 +35,6 @@ export const LeadForm: React.FC = () => {
   });
   
   const [agreed, setAgreed] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-  useEffect(() => {
-    if (prevLanguageRef.current !== language) {
-      const prevOptions = CONTENT[prevLanguageRef.current].form.options;
-      const currentOptions = CONTENT[language].form.options;
-      
-      const selectedKey = Object.keys(prevOptions).find(
-        key => prevOptions[key as keyof typeof prevOptions] === formState.interest
-      );
-
-      if (selectedKey) {
-        setFormState(prev => ({
-          ...prev,
-          interest: currentOptions[selectedKey as keyof typeof currentOptions]
-        }));
-      } else {
-        setFormState(prev => ({ ...prev, interest: currentOptions.opt1 }));
-      }
-      
-      prevLanguageRef.current = language;
-    }
-  }, [language, formState.interest]);
 
   useEffect(() => {
     if (location.state && (location.state as any).interest) {
@@ -74,64 +51,6 @@ export const LeadForm: React.FC = () => {
     }
   }, [location.state, language]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("handleSubmit triggered");
-    if (!agreed) {
-      console.log("Form not agreed");
-      return;
-    }
-    
-    setStatus('submitting');
-    console.log("Status set to submitting");
-
-    try {
-      console.log("Attempting fetch to /api/contact");
-      const response = await fetch(`${window.location.origin}/api/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formState.name,
-          phone: formState.phone,
-          email: formState.email,
-          interest: formState.interest,
-          message: formState.message
-        })
-      });
-
-      console.log("Fetch response status:", response.status);
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Fetch error:", errorData);
-        throw new Error(errorData.error || "Failed to send");
-      }
-
-      setStatus('success');
-      console.log("Status set to success");
-      
-      trackEvent('Lead', {
-        content_name: formState.interest,
-        value: 0.00,
-        currency: 'EUR'
-      });
-
-      setFormState({
-        name: '',
-        phone: '',
-        email: '',
-        interest: t.options.opt1,
-        message: ''
-      });
-      setAgreed(false);
-      
-    } catch (error) {
-      console.error("Erro ao enviar formulário:", error);
-      setStatus('error');
-    }
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormState({
       ...formState,
@@ -139,7 +58,20 @@ export const LeadForm: React.FC = () => {
     });
   };
 
-  if (status === 'success') {
+  const onFormSubmit = (e: any) => {
+    e.preventDefault();
+    if (!agreed) return;
+    
+    trackEvent('Lead', {
+        content_name: formState.interest,
+        value: 0.00,
+        currency: 'EUR'
+    });
+    
+    handleSubmit(e);
+  };
+
+  if (state.succeeded) {
     return (
       <div id="lead-form" className="bg-brand-50/80 backdrop-blur-sm p-8 rounded-2xl text-center shadow-inner h-full flex flex-col justify-center items-center animate-fade-in border border-brand-100 scroll-mt-32">
         <div className="bg-white p-4 rounded-full shadow-sm mb-6">
@@ -149,9 +81,6 @@ export const LeadForm: React.FC = () => {
         <p className="text-stone-600 mb-8 leading-relaxed">
           {t.successDesc} <strong>{formState.interest}</strong> {t.successDescEnd}
         </p>
-        <Button onClick={() => setStatus('idle')} variant="outline" className="text-sm">
-          {t.newMsgBtn}
-        </Button>
       </div>
     );
   }
@@ -163,10 +92,10 @@ export const LeadForm: React.FC = () => {
         <p className="text-sm text-stone-500">{t.subtitle}</p>
       </div>
       
-      {status === 'error' && (
+      {state.errors && (
         <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm flex items-center gap-2 mb-4 border border-red-100">
           <AlertCircle size={16} />
-          {t.error}
+          <ValidationError errors={state.errors} />
         </div>
       )}
 
@@ -283,9 +212,9 @@ export const LeadForm: React.FC = () => {
         type="submit" 
         fullWidth 
         className="mt-4 py-4 text-base shadow-xl shadow-brand-200 disabled:opacity-70 disabled:cursor-not-allowed" 
-        disabled={status === 'submitting' || !agreed}
+        disabled={state.submitting || !agreed}
       >
-        {status === 'submitting' ? (
+        {state.submitting ? (
           <>
             <Loader2 className="mr-2 h-5 w-5 animate-spin" /> {t.btnSending}
           </>

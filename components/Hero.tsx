@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 import { ArrowRight } from 'lucide-react';
 import { ASSETS, getOptimizedUrl } from '../constants';
@@ -7,25 +6,14 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { CONTENT } from '../content';
 import { OptimizedImage } from './OptimizedImage';
 import { trackEvent } from '../src/services/pixelService';
+import { CalendlyButton } from './CalendlyButton';
 
 export const Hero: React.FC = () => {
   const { language } = useLanguage();
   const t = CONTENT[language].hero;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
-  const navigate = useNavigate();
-
-  const handleScheduleClick = () => {
-    trackEvent('Contact', {
-      content_name: 'Hero CTA Main'
-    });
-    if ((window as any).openBookingWidget) {
-      (window as any).openBookingWidget();
-    } else {
-      navigate('/contactos');
-    }
-  };
-
+  
   useEffect(() => {
     if (videoRef.current && !videoError) {
       videoRef.current.muted = true;
@@ -68,9 +56,11 @@ export const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-on-scroll delay-300 pt-2">
-              <Button onClick={handleScheduleClick} className="group text-sm md:text-base w-full sm:w-auto">
-                {t.ctaMain} <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
+              <CalendlyButton 
+                text={t.ctaMain} 
+                onClick={() => trackEvent('Contact', { content_name: 'Hero CTA Main' })}
+                className="group text-sm md:text-base w-full sm:w-auto"
+              />
               <Button variant="outline" href="/tratamentos" className="text-sm md:text-base w-full sm:w-auto" onClick={() => trackEvent('ViewContent', { content_name: 'Hero CTA Secondary' })}>
                 {t.ctaSecondary}
               </Button>
