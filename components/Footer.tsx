@@ -99,6 +99,14 @@ export const Footer: React.FC = () => {
           <button onClick={() => setOpenLegal('privacy')} className="hover:text-brand-300 transition-colors">
             {t.links.privacy}
           </button>
+          <a 
+            href="https://www.livroreclamacoes.pt/Inicio/" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="hover:text-brand-300 transition-colors"
+          >
+            {t.links.livro}
+          </a>
         </div>
 
       </div>
