@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { StoryRing } from './components/StoryRing';
 import { FloatingActions } from './components/FloatingActions';
 import { BookingWidget } from './components/BookingWidget';
 import { CookieConsent } from './components/CookieConsent';
@@ -60,7 +61,8 @@ function AppContent() {
       <ScrollToTop />
       <MouseTrail />
       <Header />
-      <main className="flex-grow">
+      <StoryRing />
+      <main className="flex-grow pt-[136px]">
         <AnimatePresence mode="wait">
           <Routes location={location}>
             <Route path="/" element={<Home />} />

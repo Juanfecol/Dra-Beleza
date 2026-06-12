@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
   }, [videoError]);
 
   return (
-    <section id="home" className="relative pt-32 pb-16 md:pt-36 md:pb-32 overflow-hidden">
+    <section id="home" className="relative pt-16 pb-16 md:pt-20 md:pb-32 overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-50 via-stone-50 to-white opacity-70" />
       
       <div className="absolute top-0 right-0 -z-10 opacity-40 translate-x-1/4 -translate-y-1/4 animate-float mix-blend-multiply">
