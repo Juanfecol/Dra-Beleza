@@ -1,15 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ASSETS } from '../constants';
 import { X } from 'lucide-react';
 
 export const StoryRing: React.FC = () => {
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const scrollElement = scrollRef.current;
+        if (!scrollElement) return;
+
+        const interval = setInterval(() => {
+            if (scrollElement) {
+                if (scrollElement.scrollLeft < scrollElement.scrollWidth - scrollElement.clientWidth) {
+                    scrollElement.scrollLeft += 1;
+                } else {
+                    scrollElement.scrollLeft = 0;
+                }
+            }
+        }, 50);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>
             <div className="fixed top-24 md:top-28 left-0 w-full bg-white/70 backdrop-blur-md border-b border-stone-100 z-40">
                 <div className="container mx-auto px-4">
-                    <div className="flex overflow-x-auto gap-4 scrollbar-hide py-2 px-4 justify-center">
+                    <div className="flex overflow-x-auto gap-4 scrollbar-hide py-2 px-4 justify-center" ref={scrollRef}>
                         {[...ASSETS.testimonials, ...ASSETS.testimonials, ...ASSETS.testimonials, ...ASSETS.testimonials].map((src, index) => (
                             <div
                                 key={index}
