@@ -50,7 +50,10 @@ export const Header: React.FC = () => {
           
           <Link 
             to="/" 
-            onClick={handleNavClick}
+            onClick={() => {
+              handleNavClick();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="relative z-[101] flex-shrink-0 group"
           >
             <img 
