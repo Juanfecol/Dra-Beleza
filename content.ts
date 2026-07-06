@@ -70,56 +70,60 @@ export const CONTENT = {
           id: 'facial-corporal',
           title: 'Tratamentos Regenerativos Faciais e Corporais',
           icon: Syringe,
+          image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop',
           items: [
-            'Plasma Rico em Plaquetas',
-            'Microagulhamento regenerativo',
-            'Nutrição facial',
-            'Hidratação regenerativa (PDRN, EXOSSOMOS, NADH, NCTF)',
-            'Toxina Regenerativa',
-            'Bioestimuladores de Colagénio',
-            'Preenchimento regenerativo',
-            'Tratamento de olheiras (flacidez, bolsas, rugas)',
-            'Cicatrizes, estrias e gordura localizada',
-            'Acompanhamento Pós-Operatório',
-            'Peelings personalizados (químico, físico, enzimático)',
-            'Tratamento para Melasma (Cosmelan, Peeling e Anti-inflamatório)',
-            'Toxina Botulínica por zonas (Rosto, Hiperhidrose, Couro cabeludo)',
-            'HiFu ultrassom-microfocado (Lifting não invasivo)',
-            'Protocolos Personalizados'
+            { title: 'Plasma Rico em Plaquetas', image: 'https://images.unsplash.com/photo-1579684385127-1d15d5685a2d?q=80&w=800' },
+            { title: 'Microagulhamento regenerativo', image: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=80&w=800' },
+            { title: 'Nutrição facial', image: 'https://images.unsplash.com/photo-1590156221122-c19de3bfe11a?q=80&w=800' },
+            { title: 'Hidratação regenerativa (PDRN, EXOSSOMOS, NADH, NCTF)', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800' },
+            { title: 'Toxina Regenerativa', image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800' },
+            { title: 'Bioestimuladores de Colagénio', image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=800' },
+            { title: 'Preenchimento regenerativo', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800' },
+            { title: 'Tratamento de olheiras (flacidez, bolsas, rugas)', image: 'https://images.unsplash.com/photo-1570172619644-dfd03d5d852e?q=80&w=800' },
+            { title: 'Cicatrizes, estrias e gordura localizada', image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800' },
+            { title: 'Acompanhamento Pós-Operatório', image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800' },
+            { title: 'Peelings personalizados (químico, físico, enzimático)', image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800' },
+            { title: 'Tratamento para Melasma (Cosmelan, Peeling e Anti-inflamatório)', image: 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?q=80&w=800' },
+            { title: 'Toxina Botulínica por zonas (Rosto, Hiperhidrose, Couro cabeludo)', image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800' },
+            { title: 'HiFu ultrassom-microfocado (Lifting não invasivo)', image: 'https://images.unsplash.com/photo-1600180373801-631168153406?q=80&w=800' },
+            { title: 'Protocolos Personalizados', image: 'https://images.unsplash.com/photo-1573014133091-d19c95a82044?q=80&w=800' }
           ]
         },
         {
           id: 'skincare',
           title: 'Cuidados e Limpezas de Pele',
           icon: Sparkles,
+          image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop',
           items: [
-            'Limpeza de pele profunda',
-            'Limpeza facial com extração e ativos personalizados',
-            'Limpeza Regenerativa com BioAtivos',
-            'Plasma Rico em Plaquetas (Skinbooster Autólogo)',
-            'Sessão de manutenção da pele'
+            { title: 'Limpeza de pele profunda', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800' },
+            { title: 'Limpeza facial com extração e ativos personalizados', image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800' },
+            { title: 'Limpeza Regenerativa com BioAtivos', image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800' },
+            { title: 'Plasma Rico em Plaquetas (Skinbooster Autólogo)', image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800' },
+            { title: 'Sessão de manutenção da pele', image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=800' }
           ]
         },
         {
           id: 'capilar',
           title: 'Tratamentos Capilares Regenerativos',
           icon: Scissors,
+          image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop',
           items: [
-            'Terapia capilar para queda de cabelo',
-            'Bioestimulação do couro cabeludo',
-            'Terapia Pós-Implante Capilar',
-            'Aplicação de Exossomos e fatores de crescimento'
+            { title: 'Terapia capilar para queda de cabelo', image: 'https://images.unsplash.com/photo-1626785774573-4b799315347d?q=80&w=800' },
+            { title: 'Bioestimulação do couro cabeludo', image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800' },
+            { title: 'Terapia Pós-Implante Capilar', image: 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=800' },
+            { title: 'Aplicação de Exossomos e fatores de crescimento', image: 'https://images.unsplash.com/photo-1605497746444-17df58d109b2?q=80&w=800' }
           ]
         },
         {
           id: 'consultoria',
           title: 'Consultoria e Acompanhamento',
           icon: HeartHandshake,
+          image: 'https://dra-beleza-pt.b-cdn.net/IMG_5533-Editar.jpg',
           items: [
-            'Consulta Estética e avaliação da pele (1ª Online Gratuita)',
-            'Prescrição de rotina de Skincare',
-            'Elaboração de protocolo regenerativo personalizado',
-            'Acompanhamento pós-tratamento'
+            { title: 'Consulta Estética e avaliação da pele (1ª Online Gratuita)', image: 'https://dra-beleza-pt.b-cdn.net/583095445_18158559397400259_1522235341548302603_n.jpg' },
+            { title: 'Prescrição de rotina de Skincare', image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=800' },
+            { title: 'Elaboração de protocolo regenerativo personalizado', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800' },
+            { title: 'Acompanhamento pós-tratamento', image: 'https://dra-beleza-pt.b-cdn.net/IMG_5533-Editar.jpg' }
           ]
         }
       ],
@@ -349,56 +353,60 @@ export const CONTENT = {
           id: 'facial-corporal',
           title: 'Regenerative Facial and Body Treatments',
           icon: Syringe,
+          image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop',
           items: [
-            'Platelet Rich Plasma (PRP)',
-            'Regenerative Microneedling',
-            'Facial Nutrition',
-            'Regenerative Hydration (PDRN, EXOSOMES, NADH, NCTF)',
-            'Regenerative Toxin',
-            'Collagen Biostimulators',
-            'Regenerative Filler',
-            'Dark Circle Treatment (flaccidity, bags, wrinkles)',
-            'Scars, Stretch Marks and Localized Fat',
-            'Post-Operative Follow-up',
-            'Personalized Peels (chemical, physical, enzymatic)',
-            'Melasma Treatment (Cosmelan, Peeling and Anti-inflammatory)',
-            'Botulinum Toxin by zones (Face, Hyperhidrosis, Scalp)',
-            'HiFu Micro-focused Ultrasound (Non-invasive Lifting)',
-            'Personalized Protocols'
+            { title: 'Platelet Rich Plasma (PRP)', image: 'https://images.unsplash.com/photo-1579684385127-1d15d5685a2d?q=80&w=800' },
+            { title: 'Regenerative Microneedling', image: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=80&w=800' },
+            { title: 'Facial Nutrition', image: 'https://images.unsplash.com/photo-1590156221122-c19de3bfe11a?q=80&w=800' },
+            { title: 'Regenerative Hydration (PDRN, EXOSOMES, NADH, NCTF)', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800' },
+            { title: 'Regenerative Toxin', image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800' },
+            { title: 'Collagen Biostimulators', image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=800' },
+            { title: 'Regenerative Filler', image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800' },
+            { title: 'Dark Circle Treatment (flaccidity, bags, wrinkles)', image: 'https://images.unsplash.com/photo-1570172619644-dfd03d5d852e?q=80&w=800' },
+            { title: 'Scars, Stretch Marks and Localized Fat', image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800' },
+            { title: 'Post-Operative Follow-up', image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800' },
+            { title: 'Personalized Peels (chemical, physical, enzymatic)', image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800' },
+            { title: 'Melasma Treatment (Cosmelan, Peeling and Anti-inflammatory)', image: 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?q=80&w=800' },
+            { title: 'Botulinum Toxin by zones (Face, Hyperhidrosis, Scalp)', image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800' },
+            { title: 'HiFu Micro-focused Ultrasound (Non-invasive Lifting)', image: 'https://images.unsplash.com/photo-1600180373801-631168153406?q=80&w=800' },
+            { title: 'Personalized Protocols', image: 'https://images.unsplash.com/photo-1573014133091-d19c95a82044?q=80&w=800' }
           ]
         },
         {
           id: 'skincare',
           title: 'Skincare and Cleansing',
           icon: Sparkles,
+          image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop',
           items: [
-            'Deep Skin Cleansing',
-            'Facial Cleansing with extraction and personalized actives',
-            'Regenerative Cleansing with BioActives',
-            'Platelet Rich Plasma (Autologous Skinbooster)',
-            'Skin Maintenance Session'
+            { title: 'Deep Skin Cleansing', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800' },
+            { title: 'Facial Cleansing with extraction and personalized actives', image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800' },
+            { title: 'Regenerative Cleansing with BioActives', image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800' },
+            { title: 'Platelet Rich Plasma (Autologous Skinbooster)', image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800' },
+            { title: 'Skin Maintenance Session', image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=800' }
           ]
         },
         {
           id: 'capilar',
           title: 'Regenerative Hair Treatments',
           icon: Scissors,
+          image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop',
           items: [
-            'Hair Therapy for Hair Loss',
-            'Scalp Biostimulation',
-            'Post Hair Implant Therapy',
-            'Application of Exosomes and Growth Factors'
+            { title: 'Hair Therapy for Hair Loss', image: 'https://images.unsplash.com/photo-1626785774573-4b799315347d?q=80&w=800' },
+            { title: 'Scalp Biostimulation', image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800' },
+            { title: 'Post Hair Implant Therapy', image: 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=800' },
+            { title: 'Application of Exosomes and Growth Factors', image: 'https://images.unsplash.com/photo-1605497746444-17df58d109b2?q=80&w=800' }
           ]
         },
         {
           id: 'consultoria',
           title: 'Consultancy and Follow-up',
           icon: HeartHandshake,
+          image: 'https://dra-beleza-pt.b-cdn.net/IMG_5533-Editar.jpg',
           items: [
-            'Aesthetic Consultation and Skin Evaluation (1st Online Free)',
-            'Skincare Routine Prescription',
-            'Development of Personalized Regenerative Protocol',
-            'Post-treatment Follow-up'
+            { title: 'Aesthetic Consultation and Skin Evaluation (1st Online Free)', image: 'https://dra-beleza-pt.b-cdn.net/583095445_18158559397400259_1522235341548302603_n.jpg' },
+            { title: 'Skincare Routine Prescription', image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=800' },
+            { title: 'Development of Personalized Regenerative Protocol', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800' },
+            { title: 'Post-treatment Follow-up', image: 'https://dra-beleza-pt.b-cdn.net/IMG_5533-Editar.jpg' }
           ]
         }
       ],
