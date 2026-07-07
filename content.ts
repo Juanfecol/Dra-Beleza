@@ -28,43 +28,43 @@ export const CONTENT = {
       titleStart: 'Ciência, Beleza e',
       titleHighlight: 'Regeneração',
       titleEnd: '',
-      description: 'NÃO MUDAMOS O SEU VISUAL, MANTEMOS A SUA NATURALIDADE. Protocolos personalizados que fazem a diferença na sua autoestima. Resultados diferenciadores e duradouros desde a primeira sessão.',
+      description: 'A ciência ao serviço da sua naturalidade. Através de protocolos avançados de rejuvenescimento celular e neocolagénese profunda, restauramos a firmeza, textura e luminosidade da sua pele sem alterar a sua fisionomia original. Resultados diferenciadores, duradouros e cientificamente sustentados desde a primeira sessão.',
       ctaMain: 'Agendar Avaliação',
       ctaSecondary: 'Conhecer Tratamentos',
       stats: {
         patients: 'Pacientes Fidelizados',
         experience: 'Anos em Portugal' 
       },
-      quote: '"Neste espaço, vou ouvir o que a incomoda e oferecer uma solução profunda que não mascare, mas sim rejuvenesça a sua pele."'
+      quote: '"A verdadeira beleza não reside em marcar as feições, mas sim em nutrir e regenerar a pele para que a sua melhor versão se revele de forma totalmente natural e saudável."'
     },
     about: {
-      titleStart: 'Pioneira na Área',
+      titleStart: 'Pioneira na Estética',
       titleHighlight: 'Regenerativa',
-      p1: 'A marca Dra. Beleza celebra 5 anos de história e um propósito inabalável de levar beleza, saúde e autoestima a todos os cantos.',
-      p2: 'Com 8 anos de experiência clínica e pioneira na Estética Regenerativa em Portugal (onde atuo há 6 anos), compreendo que o futuro da Estética é a regeneração celular. Sou uma empreendedora que se recusou a desistir do seu sonho.',
-      quote: '"Neste espaço, vou ouvir o que a incomoda e oferecer uma solução profunda que não mascare, mas sim rejuvenesça a sua pele."',
-      p3: 'Já contamos com mais de 1000 pacientes fidelizados. A minha missão é oferecer soluções que equilibram corpo e mente, focadas na saúde celular real.',
+      p1: 'A marca Dra. Beleza assinala 5 anos de história em Portugal, consolidando um propósito inabalável de proporcionar saúde celular, beleza refinada e autoconfiança de forma genuína.',
+      p2: 'Com mais de 8 anos de experiência clínica e pioneira na introdução de protocolos avançados de Estética Regenerativa em Portugal (onde atua ativamente há 6 anos), a Dra. Giselle foca a sua prática médica na renovação tecular profunda. Acreditamos que o futuro do rejuvenescimento assenta na bioestimulação biológica inteligente e não no preenchimento artificial desmedido.',
+      quote: '"Neste espaço clínico, vou ouvir atentamente o que a preocupa e desenhar uma intervenção celular profunda que restabeleça a vitalidade da sua pele de dentro para fora, respeitando sempre a sua identidade."',
+      p3: 'Com uma comunidade consolidada de mais de 1000 pacientes fidelizados, a nossa missão assenta no equilíbrio absoluto entre corpo e mente. Oferecemos soluções individualizadas de alta performance, desenhadas sob rigorosos padrões científicos.',
       stats: {
         totalExp: 'Anos de Experiência', 
-        history: 'Anos de História da Marca' 
+        history: 'Anos de Marca em Portugal' 
       }
     },
     testimonials: {
-      badge: 'Histórias Reais',
-      title: 'Resultados que',
+      badge: 'Resultados Reais',
+      title: 'Histórias que',
       titleHighlight: 'Inspiram',
-      desc: 'Veja como a estética regenerativa transformou a autoestima das nossas pacientes.'
+      desc: 'Testemunhos autênticos de quem recuperou a firmeza, luminosidade e autoestima através dos nossos protocolos personalizados.'
     },
     services: {
       badge: 'Os Nossos Procedimentos',
       title: 'Estética Regenerativa',
-      subtitle: 'Selecione uma categoria para ver os protocolos personalizados',
-      scheduleBtn: 'Agendar Avaliação',
-      viewList: 'Ver lista de tratamentos',
+      subtitle: 'Selecione uma categoria para descobrir os nossos protocolos avançados e tratamentos desenhados sob medida.',
+      scheduleBtn: 'Agendar Avaliação Clínico-Estética',
+      viewList: 'Ver lista completa de tratamentos',
       academyTitle: 'Dra. Beleza Academy',
-      academyDesc: 'Formação de alta performance. Partilho os meus 8 anos de experiência para alavancar a sua carreira.',
+      academyDesc: 'Programa de formação avançada e mentoria de alta performance direcionado a profissionais do setor. Partilho integralmente os meus anos de experiência clínica, técnicas de bioestimulação e estratégias de posicionamento comercial para impulsionar a sua carreira clínica.',
       academyBtn: 'Candidatar-me à Academy',
-      academyNote: 'Vagas limitadas para mentorias exclusivas.',
+      academyNote: 'Vagas limitadas para mentoria de posicionamento e acompanhamento individualizado.',
       data: [
         {
           id: 'facial-corporal',
@@ -168,121 +168,121 @@ export const CONTENT = {
     },
     events: {
       badge: 'Tour Dra. Beleza',
-      title: 'Próximos Eventos',
-      subtitle: 'Experiências imersivas de conhecimento e beleza. Confira o calendário.',
-      calendarTitle: 'Calendário 2026',
-      mapTitle: 'Localização',
-      mapButton: 'Ver Mapa',
+      title: 'Próximos Eventos & Masterclasses',
+      subtitle: 'Experiências imersivas dedicadas ao conhecimento científico da regeneração dérmica e saúde integral. Participe e garanta o seu lugar no nosso calendário oficial.',
+      calendarTitle: 'Calendário Clínico 2026',
+      mapTitle: 'Localização do Espaço',
+      mapButton: 'Como Chegar (Mapa)',
       lisboa: {
         location: 'LISBOA',
-        title: 'Masterclass & Experiência',
-        date: 'Proximamente',
+        title: 'Masterclass Exclusiva & Imersão Regenerativa',
+        date: 'Proximamente - Vagas Limitadas',
         month: '---',
         day: '--',
-        info: 'Mais Informações',
-        btn: 'Pré-Inscrição',
+        info: 'Pedir Mais Detalhes',
+        btn: 'Pré-Inscrição Aberta',
         mapQuery: 'Lisboa, Portugal'
       },
       madeira: {
         location: 'FUNCHAL, MADEIRA',
-        title: 'Retiro de Beleza & Bem-Estar',
+        title: 'Retiro de Saúde Celular, Rejuvenescimento & Bem-Estar',
         date: '24 a 27 de Março de 2026',
         month: 'MAR',
         day: '24',
-        info: 'Mais Informações',
-        btn: 'Pré-Registo',
+        info: 'Cronograma Completo',
+        btn: 'Pré-Registo Prioritário',
         mapQuery: 'Funchal, Madeira'
       }
     },
     shop: {
       badge: 'Loja Dra. Beleza',
-      title: 'Produtos & Conhecimento',
+      title: 'Produtos de Base Clínica & Literatura Científica',
       ebook: {
-        badge: 'Best-Seller Digital',
+        badge: 'Guia Clínico Digital',
         title: 'E-book: Segredos da Beleza Regenerativa',
-        desc: 'O guia definitivo para compreender a sua pele. Descubra rituais diários, alimentação estratégica e os segredos que os profissionais não contam para manter a jovialidade naturalmente.',
-        btn: 'Comprar E-book (5,00€)'
+        desc: 'O guia definitivo e cientificamente embasado para compreender o envelhecimento da pele e restabelecer a sua barreira lipídica. Aprenda a estruturar a sua rotina diária de skincare, a selecionar os ativos corretos, e descubra hábitos alimentares que promovem a juventude celular natural.',
+        btn: 'Comprar Guia Digital (5,00€)'
       },
       kit: {
-        badge: 'Protocolo Exclusivo',
-        title: 'KIT RETINOL',
-        desc: 'A solução completa para renovação celular em casa. Inclui consulta de avaliação.',
+        badge: 'Protocolo Exclusivo Integrado',
+        title: 'KIT RETINOL CLÍNICO AVANÇADO',
+        desc: 'A solução ideal para renovação dérmica profunda em ambiente doméstico. O kit reúne retinol clínico ativo estabilizado de elevada pureza e agentes protetores de barreira. Inclui obrigatoriamente uma consulta de acompanhamento para ajuste terapêutico.',
         items: [
-          'Consulta de Avaliação',
-          'Tretinoína de 0.25%',
-          'Guia de Utilização Exclusivo'
+          'Consulta de Diagnóstico Virtual',
+          'Sérum de Retinol Clínico Estabilizado 0.25%',
+          'Manual de Uso e Suporte Clínico Exclusivo'
         ],
-        btn: 'Agendar & Adquirir'
+        btn: 'Agendar Consulta & Adquirir'
       },
       products: {
-        badge: 'Skincare & Home Care',
-        title: 'Linha Dra. Beleza',
-        desc: 'Produtos selecionados rigorosamente para complementar os seus tratamentos em clínica. Potencialize os resultados da regeneração celular no conforto de sua casa.',
-        items: ['Personalized Routine', 'Active Serums', 'Sunscreen'],
-        btn: 'View Catalog / Order'
+        badge: 'Manutenção Home-Care de Alto Padrão',
+        title: 'Gama de Manutenção Dra. Beleza',
+        desc: 'Fórmulas rigorosamente selecionadas de base dermo-cosmética com elevada concentração de ingredientes ativos que complementam na perfeição os protocolos realizados em gabinete clínico. Prolongue a neocolagénese e mantenha a integridade cutânea.',
+        items: ['Rotina de Limpeza Enzimática e Hidratação', 'Séruns Concentrados (PDRN e Fatores de Crescimento)', 'Filtro Solar Físico Mineral de Amplo Espetro'],
+        btn: 'Ver Gama Completa / Encomendar'
       }
     },
     contact: {
-      title: 'Vamos conversar?',
-      desc: 'Agende a sua consulta ou tire as suas dúvidas. O seu caminho para a beleza regenerativa começa aqui.',
-      addressTitle: 'Morada',
-      phoneTitle: 'Telefone / WhatsApp',
-      instaTitle: 'Instagram',
-      whatsappBtn: 'Falar no WhatsApp',
+      title: 'Vamos iniciar o seu plano?',
+      desc: 'Agende a sua consulta presencial ou virtual para definirmos o seu protocolo regenerativo. Estamos disponíveis para esclarecer todas as suas dúvidas clínicas de forma personalizada.',
+      addressTitle: 'Instalações Clínicas',
+      phoneTitle: 'Contacto Telefónico / WhatsApp',
+      instaTitle: 'Instagram Oficial',
+      whatsappBtn: 'Falar Diretamente pelo WhatsApp',
       footerRights: 'Todos os direitos reservados.',
-      footerTagline: 'Estética Regenerativa.',
+      footerTagline: 'Estética Regenerativa & Rejuvenescimento Celular.',
       links: {
-        terms: 'Termos e Condições',
-        privacy: 'Política de Privacidade',
-        cookies: 'Política de Cookies',
-        ral: 'Resolução de Litígios',
-        livro: 'Livro de Reclamações'
+        terms: 'Termos e Condições de Serviço',
+        privacy: 'Política de Privacidade e Proteção de Dados',
+        cookies: 'Configuração e Política de Cookies',
+        ral: 'Resolução Alternativa de Litígios de Consumo',
+        livro: 'Livro de Reclamações Eletrónico'
       }
     },
     form: {
-      title: 'Fale Connosco',
-      subtitle: 'Preencha o formulário para agendamentos ou dúvidas.',
-      successTitle: 'Pedido Recebido!',
-      successDesc: 'Obrigada pelo seu contacto. A equipa Dra. Beleza irá responder ao seu pedido sobre',
-      successDescEnd: 'muito em breve. Foi enviado um email de confirmação.',
-      newMsgBtn: 'Enviar nova mensagem',
-      error: 'Erro ao enviar. Por favor tente novamente ou contacte via WhatsApp.',
+      title: 'Agende o Seu Diagnóstico',
+      subtitle: 'Preencha os seus dados para iniciarmos a elaboração do seu plano clínico personalizado.',
+      successTitle: 'Pedido Registado com Sucesso!',
+      successDesc: 'Agradecemos o seu interesse. A equipa da Dra. Beleza irá analisar a sua solicitação relacionada com',
+      successDescEnd: 'e entrará em contacto muito brevemente. Foi enviado um email com a confirmação do seu pedido.',
+      newMsgBtn: 'Enviar nova mensagem de contacto',
+      error: 'Ocorreu um erro no processamento do envio. Por favor, tente novamente ou fale connosco pelo WhatsApp.',
       name: 'Nome Completo',
-      phone: 'Telemóvel',
-      email: 'Email',
-      interest: 'Assunto / Interesse',
-      message: 'Mensagem (Opcional)',
-      messagePlaceholder: 'Dúvidas específicas ou horário preferencial...',
-      privacy: 'Concordo com o processamento dos meus dados pessoais para efeitos de contacto e comunicação de serviços da Dra. Beleza.',
-      btnSubmit: 'Enviar Pedido',
-      btnSending: 'A Guardar...',
-      security: 'Os seus dados estão protegidos e seguros.',
+      phone: 'Contacto de Telemóvel',
+      email: 'Endereço de Email',
+      interest: 'Tratamento ou Área de Interesse Principal',
+      message: 'Mensagem Adicional / Sintomas / Dúvidas (Opcional)',
+      messagePlaceholder: 'Descreva resumidamente as suas preocupações estéticas ou a sua preferência horária...',
+      privacy: 'Dou consentimento expresso para o tratamento dos meus dados pessoais nos termos do RGPD, para efeitos de contacto de agendamento clínico e informações sobre serviços da Dra. Beleza.',
+      btnSubmit: 'Enviar Pedido de Agendamento',
+      btnSending: 'A processar o registo...',
+      security: 'Segurança Garantida: Os seus dados clínicos e de contacto são processados de forma estritamente confidencial.',
       options: {
         group1: 'Clínica & Consultas',
-        opt1: 'Consulta Estética / Avaliação',
-        opt2: 'Botox / Harmonização',
-        opt3: 'Tratamento Corporal',
+        opt1: 'Consulta de Avaliação Estética Regenerativa',
+        opt2: 'Toxina Botulínica e Harmonização',
+        opt3: 'Tratamento Corporal e Bioestimulação',
         group2: 'Eventos & Workshops',
-        opt4: 'Evento Presencial - Lisboa',
-        opt5: 'Evento Presencial - Madeira',
+        opt4: 'Masterclass Presencial - Lisboa',
+        opt5: 'Retiro Regenerativo - Madeira',
         group3: 'Loja & Produtos',
-        opt6: 'Dúvidas sobre E-book',
-        opt7: 'Encomendar Produtos',
-        optKit: 'Kit Retinol',
+        opt6: 'Informações sobre o E-book',
+        opt7: 'Encomendar Fórmulas Home-Care',
+        optKit: 'Adquirir Kit Retinol Clínico',
         group4: 'Outros',
-        opt8: 'Mentoria / Academy',
+        opt8: 'Dra. Beleza Academy / Mentoria',
       }
     },
     cookies: {
-      text: 'Utilizamos cookies para personalizar a sua experiência e para fins de marketing. Ao continuar, aceita a nossa política de privacidade.',
-      accept: 'Aceitar',
-      decline: 'Recusar'
+      text: 'Utilizamos cookies essenciais e analíticos para garantir o correto funcionamento do website e melhorar a sua experiência de navegação. Ao continuar, aceita as nossas políticas de privacidade.',
+      accept: 'Aceitar e Continuar',
+      decline: 'Recusar Opcionais'
     },
     legal: {
-      privacy: 'Política de Privacidade: Respeitamos a sua privacidade. Todos os dados recolhidos são processados de acordo com o RGPD e usados exclusivamente para comunicação de serviços solicitados. Não partilhamos dados com terceiros sem consentimento.',
-      terms: 'Termos e Condições: O uso deste site implica a aceitação das regras de utilização. Os serviços médicos e estéticos requerem avaliação prévia presencial.',
-      ral: 'Entidade de Resolução Alternativa de Litígios (RAL): Em caso de litígio, o consumidor pode recorrer a uma Entidade de Resolução Alternativa de Litígios de Consumo. Consulte o rodapé para mais informações.',
-      ers: 'Entidade Reguladora da Saúde (ERS): Estabelecimento registado. Direção Clínica: Dra. Beleza.'
+      privacy: 'Política de Privacidade: Respeitamos integralmente a confidencialidade dos seus dados. Toda a recolha e tratamento de informação pessoal é realizada em estreito cumprimento do Regulamento Geral sobre a Proteção de Dados (RGPD) e usada exclusivamente para a gestão de marcações de consultas e prestação de informações clínicas solicitadas. Não procedemos à partilha de dados com entidades terceiras sem consentimento prévio por escrito.',
+      terms: 'Termos e Condições: O acesso e utilização deste portal estão sujeitos à aceitação dos presentes termos de serviço. A marcação de quaisquer procedimentos médicos e estéticos invasivos ou não invasivos de estética regenerativa está dependente de prévia consulta de avaliação presencial de aptidão física e metabólica.',
+      ral: 'Resolução Alternativa de Litígios (RAL): Ao abrigo do artigo 18.º da Lei n.º 144/2015, em caso de litígio de consumo o consumidor pode recorrer a uma entidade de Resolução Alternativa de Litígios de Consumo legalmente reconhecida. Informações detalhadas podem ser consultadas no Portal do Consumidor ou junto do Centro de Arbitragem de Conflitos de Consumo de Lisboa.',
+      ers: 'Entidade Reguladora da Saúde (ERS): Estabelecimento clínico devidamente registado e licenciado. Direção Clínica e Técnica sob responsabilidade da Dra. Giselle.'
     }
   },
   en: {

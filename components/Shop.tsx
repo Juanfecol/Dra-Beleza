@@ -32,7 +32,7 @@ export const Shop: React.FC = () => {
           <span className="text-brand-600 font-bold tracking-widest uppercase text-[10px] md:text-xs border border-brand-100 px-3 py-1 rounded-full bg-white">{t.badge}</span>
           <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mt-4 md:mt-6 mb-4">{t.title}</h2>
           <p className="text-stone-500 max-w-2xl mx-auto text-sm md:text-base">
-            Descubra a excelência dos produtos Atomy, agora disponíveis para si.
+            Descubra a nossa seleção exclusiva de produtos de base dermo-cosmética e regenerativa, recomendados pela Dra. Beleza para complementar e prolongar os resultados dos seus tratamentos.
           </p>
         </div>
 

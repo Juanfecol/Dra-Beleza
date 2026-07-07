@@ -19,8 +19,8 @@ export const BookingWidget: React.FC = () => {
     };
   }, []);
 
-  // Google Calendar Embed URL for drabeleza.pt@gmail.com
-  const calendarUrl = "https://calendar.google.com/calendar/embed?src=drabeleza.pt%40gmail.com&ctz=Europe%2FLisbon&mode=WEEK&showPrint=0&showTabs=0&showCalendars=0&showTitle=0&showNav=1&showDate=1&showTz=0";
+  // Calendly Embed URL for Dra. Beleza
+  const calendarUrl = "https://calendly.com/drabeleza-pt/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
 
   return (
     <>
@@ -69,8 +69,8 @@ export const BookingWidget: React.FC = () => {
                   width="100%" 
                   height="100%" 
                   frameBorder="0" 
-                  scrolling="no"
-                  title="Google Calendar"
+                  scrolling="yes"
+                  title="Calendly"
                   className="absolute inset-0 opacity-0 animate-fade-in"
                   onLoad={(e) => (e.currentTarget.style.opacity = "1")}
                 ></iframe>

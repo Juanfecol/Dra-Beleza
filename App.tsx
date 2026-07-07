@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { StoryRing } from './components/StoryRing';
 import { FloatingActions } from './components/FloatingActions';
 import { BookingWidget } from './components/BookingWidget';
+import { DiagnosticChatbot } from './components/DiagnosticChatbot';
 import { CookieConsent } from './components/CookieConsent';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { CartProvider, useCart } from './contexts/CartContext';
@@ -78,6 +79,7 @@ function AppContent() {
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <FloatingActions />
       <BookingWidget />
+      <DiagnosticChatbot />
       <CookieConsent />
     </div>
   );

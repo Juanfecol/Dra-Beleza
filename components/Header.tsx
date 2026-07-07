@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram, ShoppingCart } from 'lucide-react';
+import { Menu, X, Search, ShoppingCart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { NAVIGATION_LINKS, ASSETS } from '../constants';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -7,10 +7,12 @@ import { useCart } from '../contexts/CartContext';
 import { CalendlyButton } from './CalendlyButton';
 import { CONTENT } from '../content';
 import { trackEvent } from '../src/services/pixelService';
+import { SearchModal } from './SearchModal';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
   const { totalItems, setIsCartOpen } = useCart();
   const location = useLocation();
@@ -96,15 +98,13 @@ export const Header: React.FC = () => {
                 </button>
             </div>
 
-            <a 
-              href="https://instagram.com/DraBeleza.pt" 
-              target="_blank" 
-              rel="noreferrer"
-              className="text-stone-500 hover:text-brand-600 hover:bg-brand-50 p-2 rounded-full transition-all ml-1"
-              aria-label="Instagram"
+            <button 
+              onClick={() => setIsSearchOpen(true)}
+              className="text-stone-500 hover:text-brand-600 hover:bg-brand-50 p-2 rounded-full transition-all ml-1 cursor-pointer"
+              aria-label="Pesquisa"
             >
-              <Instagram size={18} />
-            </a>
+              <Search size={18} />
+            </button>
 
             <button 
               onClick={() => setIsCartOpen(true)}
@@ -127,6 +127,14 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="lg:hidden flex items-center gap-1.5 sm:gap-3 relative z-[101]">
+             <button 
+              onClick={() => setIsSearchOpen(true)}
+              className="p-2 text-stone-800 focus:outline-none active:scale-90 transition-transform bg-white/50 rounded-full border border-stone-100 shadow-sm"
+              aria-label="Pesquisa"
+            >
+              <Search size={18} />
+            </button>
+
              <button 
               onClick={() => setIsCartOpen(true)}
               className="relative p-2 text-stone-800 focus:outline-none active:scale-90 transition-transform bg-white/50 rounded-full border border-stone-100 shadow-sm"
@@ -186,15 +194,15 @@ export const Header: React.FC = () => {
                 {t.nav[link.id]}
               </Link>
             ))}
-            <a 
-              href="https://instagram.com/DraBeleza.pt" 
-              target="_blank" 
-              rel="noreferrer"
-              className="text-stone-600 font-medium py-4 px-6 flex items-center gap-2 hover:bg-brand-50 hover:text-brand-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button 
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsSearchOpen(true);
+              }}
+              className="w-full text-left text-stone-600 font-medium py-4 px-6 flex items-center gap-2 hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-pointer"
             >
-              <Instagram size={20} /> Instagram
-            </a>
+              <Search size={20} /> {language === 'pt' ? 'Pesquisar' : 'Search'}
+            </button>
           </div>
         </div>
       </header>
@@ -206,6 +214,8 @@ export const Header: React.FC = () => {
           aria-hidden="true"
         />
       )}
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
 };

@@ -51,13 +51,13 @@ export const StoryRing: React.FC = () => {
             </div>
 
             {selectedVideo && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+                <div className="fixed inset-0 z-[250] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
                      onClick={() => setSelectedVideo(null)}>
                     <div className="relative w-full max-w-xs aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl" 
                          onClick={(e) => e.stopPropagation()}>
                         <button 
                             onClick={() => setSelectedVideo(null)}
-                            className="absolute top-4 right-4 z-[101] p-2 bg-black/50 rounded-full text-white hover:bg-black/70 backdrop-blur-sm transition-colors">
+                            className="absolute top-4 right-4 z-[251] p-2 bg-black/50 rounded-full text-white hover:bg-black/70 backdrop-blur-sm transition-colors">
                             <X size={28} />
                         </button>
                         <video 

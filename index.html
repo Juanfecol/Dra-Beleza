@@ -147,6 +147,42 @@
           -ms-overflow-style: none;
           scrollbar-width: none;
       }
+      @keyframes border-spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .animate-border-spin {
+        animation: border-spin 3s linear infinite;
+      }
+      .glowing-border-container {
+        position: relative;
+        padding: 2.5px;
+        border-radius: 9999px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .glowing-border-bg {
+        content: '';
+        position: absolute;
+        z-index: 0;
+        left: -50%;
+        top: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(#c92c4c 0deg, #d4af37 90deg, #eb7e93 180deg, #ebd27b 270deg, #c92c4c 360deg);
+        animation: border-spin 3.5s linear infinite;
+      }
+      .glowing-border-content {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+        background: #1c1917; /* stone-900 */
+      }
     </style>
   <script type="importmap">
 {
