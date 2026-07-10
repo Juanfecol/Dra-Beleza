@@ -427,7 +427,9 @@ export const DiagnosticChatbot: React.FC = () => {
 
   // Initialize chat messages when chatbot is opened for the first time
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
+    if (isOpen) {
+      setMessages([]);
+      setCurrentState('START');
       loadState('START', true);
     }
   }, [isOpen]);
