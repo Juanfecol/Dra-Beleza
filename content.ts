@@ -35,7 +35,7 @@ export const CONTENT = {
         patients: 'Pacientes Fidelizados',
         experience: 'Anos em Portugal' 
       },
-      quote: '"A verdadeira beleza não reside em marcar as feições, mas sim em nutrir e regenerar a pele para que a sua melhor versão se revele de forma totalmente natural e saudável."'
+      quote: '"A verdadeira beleza reside na estética regenerativa: nutrimos e regeneramos a pele para revelar a sua melhor versão, de forma natural e saudável."'
     },
     about: {
       titleStart: 'Pioneira na Estética',

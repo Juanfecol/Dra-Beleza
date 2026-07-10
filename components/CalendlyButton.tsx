@@ -27,10 +27,17 @@ export const CalendlyButton: React.FC<CalendlyButtonProps> = ({
     }
     
     e.preventDefault();
-    if (window.Calendly) {
-        window.Calendly.initPopupWidget({
-          url: 'https://calendly.com/drabeleza-pt/30min'
-        });
+    
+    // Redirect all booking attempts through the Chatbot flow
+    if ((window as any).openDiagnosticChatbot) {
+        (window as any).openDiagnosticChatbot();
+    } else {
+        // Fallback if chatbot not available
+        if (window.Calendly) {
+            window.Calendly.initPopupWidget({
+                url: 'https://calendly.com/drabeleza-pt/30min'
+            });
+        }
     }
   };
 
